@@ -66,7 +66,6 @@
      <Compile Include="Assets\Scripts\LegionSoldier.cs" />
      <Compile Include="Assets\Scripts\LegionPool.cs" />
      <Compile Include="Assets\Scripts\LegionTower.cs" />
-     <Compile Include="Assets\Scripts\AttributeObject.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
