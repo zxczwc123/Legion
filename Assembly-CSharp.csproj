@@ -52,21 +52,21 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Legion\LegionPath.cs" />
-     <Compile Include="Assets\Legion\LegionGame.cs" />
-     <Compile Include="Assets\Legion\LegionUtil.cs" />
-     <Compile Include="Assets\Legion\LegionProAI.cs" />
-     <Compile Include="Assets\Legion\LegionTowerManager.cs" />
-     <Compile Include="Assets\Legion\LegionVO.cs" />
-     <Compile Include="Assets\Legion\LegionPathManager.cs" />
-     <Compile Include="Assets\Legion\LegionAI.cs" />
-     <Compile Include="Assets\Legion\LegionSoldierManager.cs" />
-     <Compile Include="Assets\Legion\LegionVOObject.cs" />
-     <Compile Include="Assets\Legion\LegionType.cs" />
-     <Compile Include="Assets\Legion\LegionSoldier.cs" />
-     <Compile Include="Assets\Legion\LegionPool.cs" />
-     <Compile Include="Assets\Legion\LegionTower.cs" />
-     <Compile Include="Assets\Legion\AttributeObject.cs" />
+     <Compile Include="Assets\Scripts\LegionPath.cs" />
+     <Compile Include="Assets\Scripts\LegionGame.cs" />
+     <Compile Include="Assets\Scripts\LegionUtil.cs" />
+     <Compile Include="Assets\Scripts\LegionProAI.cs" />
+     <Compile Include="Assets\Scripts\LegionTowerManager.cs" />
+     <Compile Include="Assets\Scripts\LegionVO.cs" />
+     <Compile Include="Assets\Scripts\LegionPathManager.cs" />
+     <Compile Include="Assets\Scripts\LegionAI.cs" />
+     <Compile Include="Assets\Scripts\LegionSoldierManager.cs" />
+     <Compile Include="Assets\Scripts\LegionVOObject.cs" />
+     <Compile Include="Assets\Scripts\LegionType.cs" />
+     <Compile Include="Assets\Scripts\LegionSoldier.cs" />
+     <Compile Include="Assets\Scripts\LegionPool.cs" />
+     <Compile Include="Assets\Scripts\LegionTower.cs" />
+     <Compile Include="Assets\Scripts\AttributeObject.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
