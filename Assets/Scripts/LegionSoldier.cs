@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Pathfinding;
+using UnityEngine;
 
 public class LegionSoldier : MonoBehaviour
 {
@@ -51,9 +52,22 @@ public class LegionSoldier : MonoBehaviour
         {
             if (m_sprite == null)
             {
-                m_sprite = transform.GetComponent<SpriteRenderer>();
+                m_sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
             }
             return m_sprite;
+        }
+    }
+
+    private LegionAIDestinationSetter m_DestinationSetter;
+    private LegionAIDestinationSetter DestinationSetter
+    {
+        get
+        {
+            if (m_DestinationSetter == null)
+            {
+                m_DestinationSetter = gameObject.SeekComponent<LegionAIDestinationSetter>();
+            }
+            return m_DestinationSetter;
         }
     }
 
@@ -64,6 +78,9 @@ public class LegionSoldier : MonoBehaviour
     public void SetTarget(LegionTower tower)
     {
         m_target = tower;
+        DestinationSetter.target = m_target.transform;
+        DestinationSetter.OnMoveComplete = OnMoveComplete;
+        DestinationSetter.StartPath();
     }
 
     private void Update()
@@ -77,11 +94,12 @@ public class LegionSoldier : MonoBehaviour
         {
             return;
         }
-        transform.position += (m_target.transform.position - transform.position).normalized * m_speed * Time.deltaTime;
-        if (Vector2.Distance(transform.position, m_target.transform.position) < 0.1)
-        {
-            OnMoveComplete();
-        }
+        
+        // transform.position += (m_target.transform.position - transform.position).normalized * m_speed * Time.deltaTime;
+        // if (Vector2.Distance(transform.position, m_target.transform.position) < 0.1)
+        // {
+        //     OnMoveComplete();
+        // }
     }
 
     private void OnMoveComplete()

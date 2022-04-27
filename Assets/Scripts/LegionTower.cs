@@ -87,7 +87,7 @@ public class LegionTower : MonoBehaviour
         {
             if (m_sprite == null)
             {
-                m_sprite = transform.GetComponent<SpriteRenderer>();
+                m_sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
             }
             return m_sprite;
         }
