@@ -57,9 +57,11 @@
      <Compile Include="Assets\Scripts\LegionUtil.cs" />
      <Compile Include="Assets\Scripts\LegionProAI.cs" />
      <Compile Include="Assets\Scripts\LegionTowerManager.cs" />
+     <Compile Include="Assets\Scripts\LegionVO.cs" />
      <Compile Include="Assets\Scripts\LegionPathManager.cs" />
      <Compile Include="Assets\Scripts\LegionAI.cs" />
      <Compile Include="Assets\Scripts\LegionSoldierManager.cs" />
+     <Compile Include="Assets\Scripts\LegionVOObject.cs" />
      <Compile Include="Assets\Scripts\LegionType.cs" />
      <Compile Include="Assets\Scripts\LegionSoldier.cs" />
      <Compile Include="Assets\Scripts\LegionPool.cs" />
