@@ -1,31 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LegionGame : MonoBehaviour
 {
+    public static LegionGame instance;
+    
+    public Texture[] ColorTextures;
+    
     private List<LegionTower> m_towers = new List<LegionTower>();
 
     private LegionTower m_targetTower;
     
     private List<LegionAI> m_legionAIs = new List<LegionAI>();
 
+    // private Vector3[] m_towerPoses = new[]
+    // {
+    //     new Vector3(0, 0, 0),
+    //     new Vector3(5, -5, 0),
+    //     new Vector3(-5, 5, 0),
+    //     
+    //     new Vector3(5, 5, 0),
+    //     new Vector3(0, 5, 0),
+    //     new Vector3(5, 0, 0),
+    //     new Vector3(-5, -5, 0),
+    //     new Vector3(0, -5, 0),
+    //     new Vector3(-5, 0, 0),
+    // };
+
+    
+    
     private Vector3[] m_towerPoses = new[]
     {
         new Vector3(0, 0, 0),
-        new Vector3(5, -5, 0),
-        new Vector3(-5, 5, 0),
+        new Vector3(5, 0, -5),
+        new Vector3(-5, 0, 5),
         
-        new Vector3(5, 5, 0),
-        new Vector3(0, 5, 0),
+        new Vector3(5, 0, 5),
+        new Vector3(0, 0, 5),
         new Vector3(5, 0, 0),
-        new Vector3(-5, -5, 0),
-        new Vector3(0, -5, 0),
+        new Vector3(-5, 0, -5),
+        new Vector3(0, 0, -5),
         new Vector3(-5, 0, 0),
     };
     
     private void Start()
     {
+        instance = this;
         for (var i = 0; i <m_towerPoses.Length; i++)
         {
             var tower = LegionTowerManager.Instance.Get();
@@ -39,10 +61,10 @@ public class LegionGame : MonoBehaviour
             tower.OnMouseEnterEvent = OnMouseEnterEvent;
             tower.OnMouseExitEvent = OnMouseExitEvent;
         }
-        var aiBlue = gameObject.AddComponent<LegionAI>();
-        aiBlue.SetGame(this, (int) LegionType.Blue);
-        m_legionAIs.Add(aiBlue);
-
+        // var aiBlue = gameObject.AddComponent<LegionAI>();
+        // aiBlue.SetGame(this, (int) LegionType.Blue);
+        // m_legionAIs.Add(aiBlue);
+        //
         var aiRed = gameObject.AddComponent<LegionProAI>();
         aiRed.SetGame(this, (int) LegionType.Red);
         m_legionAIs.Add(aiRed);

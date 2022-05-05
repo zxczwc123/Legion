@@ -54,20 +54,29 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\LegionPath.cs" />
      <Compile Include="Assets\Scripts\LegionGame.cs" />
+     <Compile Include="Assets\Scripts\TowerColorSetter.cs" />
+     <Compile Include="Assets\Scripts\LegionPathManager.cs" />
+     <Compile Include="Assets\Scripts\LegionAI.cs" />
+     <Compile Include="Assets\Scripts\LegionVOObject.cs" />
+     <Compile Include="Assets\Scripts\LegionType.cs" />
+     <Compile Include="Assets\Scripts\LegionPool.cs" />
+     <Compile Include="Assets\Scripts\Data\TowerInfo.cs" />
+     <Compile Include="Assets\Scripts\LegionTower.cs" />
+     <Compile Include="Assets\Scripts\Config\TowerConfig.cs" />
      <Compile Include="Assets\Scripts\LegionUtil.cs" />
      <Compile Include="Assets\Scripts\LegionProAI.cs" />
      <Compile Include="Assets\Scripts\LegionTowerManager.cs" />
      <Compile Include="Assets\Scripts\LegionVO.cs" />
-     <Compile Include="Assets\Scripts\LegionPathManager.cs" />
-     <Compile Include="Assets\Scripts\LegionAI.cs" />
+     <Compile Include="Assets\Scripts\MathTool.cs" />
      <Compile Include="Assets\Scripts\LegionSoldierManager.cs" />
-     <Compile Include="Assets\Scripts\LegionVOObject.cs" />
-     <Compile Include="Assets\Scripts\LegionType.cs" />
      <Compile Include="Assets\Scripts\LegionSoldier.cs" />
-     <Compile Include="Assets\Scripts\LegionPool.cs" />
-     <Compile Include="Assets\Scripts\LegionTower.cs" />
      <Compile Include="Assets\Scripts\Ext.cs" />
-     <Compile Include="Assets\Scripts\LegionAIDestinationSetter.cs" />
+     <Compile Include="Assets\Scripts\Config\LevelConfig.cs" />
+     <None Include="Assets\AssetOriginal\Shader\Model.shader" />
+     <None Include="Assets\AssetOriginal\ToonShading\Shaders\JS_BL.shader" />
+     <None Include="Assets\AssetOriginal\ToonShading\Shaders\URP_CustomToonOutline.shader" />
+     <None Include="Assets\AssetOriginal\Shader\Model2.shader" />
+     <None Include="Assets\AssetOriginal\Shader\AddUV_Mask.shader" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -293,8 +302,8 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>E:/Zxc/Legion/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>E:/Zxc/Legion/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -644,20 +653,32 @@
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <Reference Include="Unity.RemoteConfig.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Searcher.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -668,23 +689,44 @@
  <Reference Include="Unity.Rider.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mathematics">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RemoteConfig.Core">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RemoteConfig">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{45e66497-58cd-a164-0c8e-ce2c9ec952a8}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{f33fca89-0f86-6487-8ad7-db528b96ce43}</Project>
-      <Name>AstarPathfindingProject</Name>
-    </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{c25596e3-0b66-12c9-e58a-9db30f568a50}</Project>
-      <Name>PackageToolsEditor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

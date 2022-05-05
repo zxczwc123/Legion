@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using DefaultNamespace;
 using UnityEngine;
 
 public class LegionTower : MonoBehaviour
@@ -26,6 +27,7 @@ public class LegionTower : MonoBehaviour
         {
             m_legion = value;
             Sprite.color = LegionUtil.GetColor(m_legion);
+            ColorSetter.SetColor((LegionType)m_legion);
         }
     }
     
@@ -90,6 +92,19 @@ public class LegionTower : MonoBehaviour
                 m_sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
             }
             return m_sprite;
+        }
+    }
+    
+    private TowerColorSetter m_ColorSetter;
+    protected TowerColorSetter ColorSetter
+    {
+        get
+        {
+            if (m_ColorSetter == null)
+            {
+                m_ColorSetter = transform.Find("Entity").GetComponent<TowerColorSetter>();
+            }
+            return m_ColorSetter;
         }
     }
 
@@ -244,16 +259,16 @@ public class LegionTower : MonoBehaviour
             return;
         }
         var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        worldPos.z = 0;
-        var n = worldPos - transform.position;
+        var rayPos = MathTool.IntersectLineAndPlane(worldPos, Camera.main.transform.forward, Vector3.up, Vector3.zero);
+        var n = rayPos - transform.position;
         var angle = Vector3.Angle(Vector3.right, n);
-        if (n.y < 0)
+        if (n.z > 0)
         {
             angle = -angle;
         }
-        m_path.transform.localRotation = Quaternion.Euler(0,0,angle);
+        m_path.transform.localRotation = Quaternion.Euler(0,angle,0);
         var scale = m_path.transform.localScale;
-        scale.x = Vector3.Distance(worldPos, transform.position);
+        scale.x = Vector3.Distance(rayPos, transform.position);
         m_path.transform.localScale = scale;
     }
 }
