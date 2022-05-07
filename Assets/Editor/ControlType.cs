@@ -2,4 +2,5 @@
 {
     Link,
     Move,
+    Del,
 }

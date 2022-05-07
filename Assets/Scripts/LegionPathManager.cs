@@ -22,7 +22,7 @@ public class LegionPathManager : LegionPool<LegionPath>
                 {
                     m_instance = obj.AddComponent<LegionPathManager>();
                 }
-                var poolObj = GameObject.Find("Path");
+                var poolObj = Resources.Load<GameObject>("Prefabs/Path");
                 m_instance.Init(poolObj);
             }
             return m_instance;
@@ -40,7 +40,7 @@ public class LegionPathManager : LegionPool<LegionPath>
             return;
         }
         m_instance = this;
-        var poolObj = GameObject.Find("Path");
+        var poolObj = Resources.Load<GameObject>("Prefabs/Path");
         Init(poolObj);
     }
 }

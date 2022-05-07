@@ -12,7 +12,6 @@ public abstract class LegionPool<T> : MonoBehaviour where T : MonoBehaviour
         {
             obj = poolObj.AddComponent<T>();
         }
-        obj.gameObject.SetActive(false);
         m_paths.Add(obj);
     }
 

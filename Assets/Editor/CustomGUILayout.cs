@@ -7,12 +7,10 @@ namespace Editor
     public class CustomGUILayout
     {
         public static int AspectSelectionGridImageAndText(int selected, GUIContent[] textures, int approxSize,
-            GUIStyle style, string emptyString, out bool doubleClick)
+            GUIStyle style, string emptyString )
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.MinHeight(10));
             int selectIndex = 0;
-
-            doubleClick = false;
 
             if (textures.Length != 0)
             {
@@ -26,35 +24,36 @@ namespace Editor
                     case EventType.MouseDown:
                         if (evt.clickCount == 2 && rect.Contains(evt.mousePosition))
                         {
-                            doubleClick = true;
                             evt.Use();
                         }
                         break;
                     case EventType.MouseUp:
-                        if (GUIUtility.hotControl == cid)
-                        {
-                            GUIUtility.hotControl = 0;
-                        }
+                        DragAndDrop.SetGenericData("TowerTag", null);
                         break;
                     case EventType.MouseDrag:
+                       
                         if (rect.Contains(evt.mousePosition))
                         {
                             var index = GetDragRectIndex(evt.mousePosition, rect, textures.Length, xCount);
                             if (index >= 0 && index < textures.Length)
                             {
-                                GUIUtility.hotControl = cid;
+                                Debug.Log($"MouseDrag ========================{index}");
+                                DragAndDrop.PrepareStartDrag();
+                                DragAndDrop.SetGenericData("index", index);
+                                DragAndDrop.SetGenericData("TowerTag", "TowerTag");
+                                DragAndDrop.StartDrag("tower");
+                                DragAndDrop.activeControlID = cid;
                             }
                         }
                         break;
                     case EventType.DragPerform:
                         break;
                     case EventType.DragUpdated:
+                        Debug.Log("DragUpdated");
                         break;
                     case EventType.DragExited:
-                        if (GUIUtility.hotControl == cid)
-                        {
-                            GUIUtility.hotControl = 0;
-                        }
+                        Debug.Log("DragExited ========================");
+                        GUIUtility.hotControl = 0;
                         break;
                 }
 

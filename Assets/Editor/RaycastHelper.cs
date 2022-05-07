@@ -55,7 +55,7 @@ public class RaycastHelper
     public static Vector3 RaycastYZeroPlane(Vector2 mousePosition)
     {
         var ray = GUIPointToWorldRayPrecise(mousePosition);
-        return MathTool.IntersectLineAndPlane(ray.origin, ray.direction, Vector3.up, Vector3.one);
+        return MathTool.IntersectLineAndPlane(ray.origin, ray.direction, Vector3.up, Vector3.zero);
     }
 
     public static Ray GUIPointToWorldRayPrecise(Vector2 guiPoint, float startZ = float.NegativeInfinity)

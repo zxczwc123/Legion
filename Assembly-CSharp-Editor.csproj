@@ -53,14 +53,24 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\ConfigManager.cs" />
+     <Compile Include="Assets\Editor\TowerAddHandler.cs" />
      <Compile Include="Assets\Editor\ExcelDataReader.cs" />
      <Compile Include="Assets\Editor\EditTower.cs" />
+     <Compile Include="Assets\Editor\TowerManager.cs" />
      <Compile Include="Assets\Editor\ControlType.cs" />
+     <Compile Include="Assets\Editor\TowerDragHandler.cs" />
      <Compile Include="Assets\Editor\HandleHelper.cs" />
      <Compile Include="Assets\Editor\LegionEditorWindow.cs" />
      <Compile Include="Assets\Editor\RaycastHelper.cs" />
-     <Compile Include="Assets\Editor\TowerDragHandler.cs" />
      <Compile Include="Assets\Editor\CustomGUILayout.cs" />
+     <Compile Include="Assets\Editor\TowerLinkHandler.cs" />
+     <Compile Include="Assets\Editor\RoadManager.cs" />
+     <Compile Include="Assets\Editor\EditRoad.cs" />
+     <Compile Include="Assets\Editor\DelHandler.cs" />
+     <Compile Include="Assets\Editor\ExcelDataWriter.cs" />
+     <Compile Include="Assets\Editor\ExcelReader.cs" />
+     <Compile Include="Assets\Editor\ExcelTypeFormatterManager.cs" />
+     <Compile Include="Assets\Editor\LegionSelection.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

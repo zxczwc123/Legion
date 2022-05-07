@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using DefaultNamespace.Data;
 using Editor;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,23 +23,20 @@ public class LegionEditorWindow : EditorWindow
 
     private void OnEnable()
     {
+        LegionSelection.SelectTower = null;
         InitEditRoot();
+        InitTowers();
         SceneView.duringSceneGui += OnSceneGUI;
-        var levelConfig = ConfigManager.GetDict<LevelConfig>();
-        foreach (var towerItem in levelConfig.Values)
-        {
-            var tower = new EditTower();
-            var towerInfo = new TowerInfo();
-            towerInfo.Init(towerItem);
-            tower.Init(towerInfo);
-            m_Towers.Add(tower);
-        }
+        LegionSelection.OnSelectTowerChange += OnSelectTowerChange;
     }
 
     private void OnDisable()
     {
+        LegionSelection.SelectTower = null;
+        SceneView.duringSceneGui -= OnSceneGUI;
+        LegionSelection.OnSelectTowerChange -= OnSelectTowerChange;
         ReleaseEditRoot();
-        SceneView.duringSceneGui += OnSceneGUI;
+        ReleaseTowers();
         ConfigManager.Release();
     }
 
@@ -63,13 +60,83 @@ public class LegionEditorWindow : EditorWindow
         EditRoot = null;
     }
 
+    private void InitTowers()
+    {
+        var levelConfig = ConfigManager.GetDict<LevelConfig>();
+        if (levelConfig != null)
+        {
+            foreach (var towerItem in levelConfig.Values)
+            {
+                var tower = TowerManager.CreateTower(towerItem);
+                tower.InitRoads(m_Towers);
+                m_Towers.Add(tower);
+            }
+        }
+    }
+
+    private void ReleaseTowers()
+    {
+        m_Towers.Clear();
+    }
+
+    private void AddTower()
+    {
+        if (TowerAddHandler.dragTarget != null)
+        {
+            TowerAddHandler.dragTarget.SetId(m_Towers.Count);
+            m_Towers.Add(TowerAddHandler.dragTarget);
+        }
+    }
+
+    private void ResetId()
+    {
+        for (var i = 0; i < m_Towers.Count; i++)
+        {
+            var tower = m_Towers[i];
+            tower.SetId(i);
+        }
+    }
+
+    private void OnSelectTowerChange()
+    {
+        Repaint();
+    }
+
     private void OnGUI()
     {
+        GUILayout.Label("列表");
+        
         var emptyTips = "配置表中无数据！";
         var style = new GUIStyle("GridListText");
         var contents = GetPrefabContents();
         m_selectTowerIndex = CustomGUILayout.AspectSelectionGridImageAndText(m_selectTowerIndex, contents, 64,
-            style, emptyTips, out bool doubleClick);
+            style, emptyTips);
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.MinHeight(10));
+        if (LegionSelection.SelectTower != null)
+        {
+            GUILayout.Label($"当前选中ID:{LegionSelection.SelectTower.towerInfo.Id}");
+            var count = LegionSelection.SelectTower.towerInfo.Count;
+            LegionSelection.SelectTower.towerInfo.Count = EditorGUILayout.IntField("数量", count);
+            var legion = LegionSelection.SelectTower.towerInfo.Legion;
+            LegionSelection.SelectTower.towerInfo.Legion = EditorGUILayout.IntField("队伍", legion);
+        }
+        else
+        {
+            GUILayout.Label("无选中");
+        }
+        EditorGUILayout.EndVertical();
+        if (GUILayout.Button("保存"))
+        {
+            ResetId();
+            var levelConfig = new Dictionary<int,LevelConfig>();
+            for (var i = 0; i < m_Towers.Count; i++)
+            {
+                var tower = m_Towers[i];
+                var config = tower.ToLevelConfig();
+                levelConfig.Add(tower.towerInfo.Id,config);
+            }
+            ConfigManager.SaveDict(levelConfig);
+        }
     }
 
     private GUIContent[] GetPrefabContents()
@@ -77,16 +144,17 @@ public class LegionEditorWindow : EditorWindow
         var towerConfig = ConfigManager.GetDict<TowerConfig>();
         var contents = new GUIContent[towerConfig.Count];
         var index = 0;
-        foreach (var towerItem in towerConfig)
+        foreach (var towerItem in towerConfig.Values)
         {
-            var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/" + towerItem.Value.Prefab + ".prefab");
-            var prefab = Resources.Load(towerItem.Value.Prefab);
+            var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/" + towerItem.Prefab + ".prefab");
+            var prefab = Resources.Load(towerItem.Prefab);
             Texture tex = AssetPreview.GetAssetPreview(asset);
             var content = new GUIContent();
             contents[index] = content;
             var name = prefab.name;
             content.text = name;
             content.tooltip = name;
+            content.image = tex;
             index++;
         }
         return contents;
@@ -96,19 +164,95 @@ public class LegionEditorWindow : EditorWindow
     {
         OnDrawSceneGUI();
         var e = Event.current;
+        var cid = GUIUtility.GetControlID(FocusType.Passive);
+        var towerTag = DragAndDrop.GetGenericData("TowerTag");
+        switch (e.keyCode)
+        {
+            case KeyCode.Escape:
+                if (m_ControlType == ControlType.Link)
+                {
+                    TowerLinkHandler.OnCancel();
+                }
+                else
+                {
+                    TowerDragHandler.OnCancel();
+                }
+                e.Use();
+                break;
+        }
         switch (e.type)
         {
             case EventType.Layout:
-                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+                HandleUtility.AddDefaultControl(cid);
                 break;
             case EventType.MouseDown:
-                TowerDragHandler.OnMouseDown(m_Towers);
+                if (m_ControlType == ControlType.Link)
+                {
+                    TowerLinkHandler.OnMouseDown(m_Towers);
+                }
+                else if(m_ControlType == ControlType.Move)
+                {
+                    TowerDragHandler.OnMouseDown(m_Towers);
+                }
+                break;
+            case EventType.MouseMove:
+                Debug.Log("MouseMove Copy");
                 break;
             case EventType.MouseDrag:
-                TowerDragHandler.OnMouseDrag();
+                Debug.Log("MouseDrag");
+                if (m_ControlType == ControlType.Link)
+                {
+                    TowerLinkHandler.OnMouseDrag();
+                }
+                else if(m_ControlType == ControlType.Move)
+                {
+                    TowerDragHandler.OnMouseDrag();
+                }
+                break;
+            case EventType.DragPerform:
+                Debug.Log("DragPerform Scene");
+                if (towerTag != null)
+                {
+                    AddTower();
+                    TowerAddHandler.OnDragAccept();
+                    DragAndDrop.SetGenericData("TowerTag",null);
+                    DragAndDrop.AcceptDrag();
+                    e.Use();
+                }
+                break;
+            case EventType.DragUpdated:
+                Debug.Log("DragUpdated Scene");
+                if (towerTag != null)
+                {
+                    DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                    TowerAddHandler.OnDragUpdated();
+                }
+                else
+                    DragAndDrop.visualMode = DragAndDropVisualMode.None;
+                break;
+            case EventType.DragExited:
+                if (towerTag != null)
+                {
+                    DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                    TowerAddHandler.OnCancel();
+                    DragAndDrop.SetGenericData("TowerTag",null);
+                    DragAndDrop.AcceptDrag();
+                    e.Use();
+                }
                 break;
             case EventType.MouseUp:
-                TowerDragHandler.OnMouseUp();
+                if (m_ControlType == ControlType.Link)
+                {
+                    TowerLinkHandler.OnMouseUp(m_Towers);
+                }
+                else if(m_ControlType == ControlType.Move)
+                {
+                    TowerDragHandler.OnMouseUp();
+                }
+                else
+                {
+                    DelHandler.OnMouseUp(m_Towers);
+                }
                 break;
         }
     }
@@ -123,6 +267,10 @@ public class LegionEditorWindow : EditorWindow
         if (GUI.Toggle(new Rect(60, -10, 50, 50), m_ControlType == ControlType.Move, "移动"))
         {
             m_ControlType = ControlType.Move;
+        }
+        if (GUI.Toggle(new Rect(110, -10, 50, 50), m_ControlType == ControlType.Del, "删除"))
+        {
+            m_ControlType = ControlType.Del;
         }
         Handles.EndGUI();
     }

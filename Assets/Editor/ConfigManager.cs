@@ -27,6 +27,14 @@ public class ConfigManager
         return dict;
     }
 
+    public static void SaveDict<T>(Dictionary<int, T> config)
+    {
+        var configName = typeof(T).Name;
+        var path = GetConfigExcelPath(configName);
+        var excelReader = new ExcelDataWriter(path);
+        excelReader.SaveDict(config);
+    }
+
     public static void Release()
     {
         configDict.Clear();

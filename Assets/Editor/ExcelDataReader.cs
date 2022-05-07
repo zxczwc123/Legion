@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using OfficeOpenXml;
+using PlasticGui.WorkspaceWindow.Merge;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class ExcelDataReader
 {
@@ -50,10 +53,10 @@ public class ExcelDataReader
         var rows = cells.Rows;
         ReadTypeNames(cells, 2);
         var colCount = m_TypeNameList.Count;
-        m_TypeList = ReadRowData(cells, 3, colCount);
+        m_TypeList = ExcelReader.ReadRowData(cells, 3, colCount);
         for (int i = 4; i <= rows; i++)
         {
-            var rowData = ReadRowData(cells, i, colCount);
+            var rowData = ExcelReader.ReadRowData(cells, i, colCount);
             if (rowData == null)
                 break;
             m_ValueList.Add(rowData);
@@ -73,24 +76,7 @@ public class ExcelDataReader
         }
     }
     
-    private List<string> ReadRowData(ExcelRange cells, int row , int colCount)
-    {
-        List<string> rowData = null;
-        for (var col = 1; col <= colCount; col++)
-        {
-            var text = cells[row, col];
-            if (col == 1)
-            {
-                if(string.IsNullOrEmpty(text.Text.Trim()))
-                {
-                    return null;
-                }
-                rowData = new List<string>();
-            }
-            rowData.Add(text.Text);
-        }
-        return rowData;
-    }
+    
 
     public Dictionary<int, T> GetDict<T>() 
     {
@@ -154,22 +140,11 @@ public class ExcelDataReader
 
     private object FormatValue(Type type, string value)
     {
-        if (type == typeof(string))
+        var parseFormatter = ExcelTypeFormatterManager.GetParseFormatter(type);
+        if (parseFormatter != null)
         {
-            return value;
+            return parseFormatter(value);
         }
-        if (type == typeof(int))
-        {
-            return int.Parse(value);
-        }
-        if (type == typeof(double))
-        {
-            return double.Parse(value);
-        }
-        if (type == typeof(float))
-        {
-            return float.Parse(value);
-        }
-        return null;
+        return value;
     }
 }

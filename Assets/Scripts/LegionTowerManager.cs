@@ -20,7 +20,7 @@ public class LegionTowerManager : LegionPool<LegionTower>
                 {
                     m_instance = obj.AddComponent<LegionTowerManager>();
                 }
-                var poolObj = GameObject.Find("Tower");
+                var poolObj = Resources.Load<GameObject>("Prefabs/Tower");
                 m_instance.Init(poolObj);
             }
             return m_instance;
@@ -38,7 +38,7 @@ public class LegionTowerManager : LegionPool<LegionTower>
             return;
         }
         m_instance = this;
-        var poolObj = GameObject.Find("Tower");
+        var poolObj = Resources.Load<GameObject>("Prefabs/Tower");
         Init(poolObj);
     }
 }

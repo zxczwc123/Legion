@@ -6,6 +6,8 @@ public class TowerDragHandler
     public static EditTower dragTarget;
 
     private static Vector3 prePosition;
+
+    private static Vector3 startPosition;
     
     public static void OnMouseDown(List<EditTower> towers)
     {
@@ -13,10 +15,13 @@ public class TowerDragHandler
         dragTarget = tower;
         if (dragTarget == null)
         {
+            LegionSelection.SelectTower = null;
             return;
         }
+        LegionSelection.SelectTower = tower;
         var e = Event.current;
-        prePosition = RaycastHelper.RaycastYZeroPlane(e.mousePosition);
+        startPosition = RaycastHelper.RaycastYZeroPlane(e.mousePosition);
+        prePosition = startPosition;
     }
 
     public static void OnMouseDrag()
@@ -30,10 +35,22 @@ public class TowerDragHandler
         var deltaPosition = curPosition - prePosition;
         dragTarget.gameObject.transform.position += deltaPosition;
         prePosition = curPosition;
+        
+        dragTarget.UpdateRoad();
     }
 
     public static void OnMouseUp()
     {
         dragTarget = null;
+    }
+
+    public static void OnCancel()
+    {
+        if (dragTarget != null)
+        {
+            dragTarget.gameObject.transform.position = startPosition;
+            dragTarget.UpdateRoad();
+            dragTarget = null;
+        }
     }
 }

@@ -10,8 +10,6 @@ public class ExcelDataWriter
     
     private List<string> m_TypeList;
     
-    private List<List<string>> m_ValueList;
-
     private ExcelPackage m_Package;
 
     private ExcelWorksheet m_Worksheet;
@@ -36,7 +34,6 @@ public class ExcelDataWriter
     private void Read()
     {
         m_TypeList = new List<string>();
-        m_ValueList = new List<List<string>>();
         var cells = m_Worksheet.Cells;
         var rows = cells.Rows;
         ReadTypeNames(cells, 2);
@@ -47,7 +44,7 @@ public class ExcelDataWriter
             var rowData = ExcelReader.ReadRowData(cells, i, colCount);
             if (rowData == null)
                 break;
-            m_ValueList.Add(rowData);
+            m_Worksheet.DeleteRow(i);
         }
     }
     
@@ -66,10 +63,6 @@ public class ExcelDataWriter
     
     public void SaveDict<T>(Dictionary<int, T> dict) 
     {
-        if (m_ValueList == null)
-        {
-            return;
-        }
         var type = typeof(T);
         var fieldInfos = type.GetFields(BindingFlags.Instance | BindingFlags.Public);
         var fieldDict = new Dictionary<string, FieldInfo>();
@@ -96,7 +89,12 @@ public class ExcelDataWriter
             if (fieldDict.ContainsKey(name))
             {
                 var fieldInfo = fieldDict[name];
-                cells.SetCellValue(row - 1, col - 1, fieldInfo.GetValue(data));
+                var format = ExcelTypeFormatterManager.GetStringFormatter(fieldInfo.FieldType);
+                var value = fieldInfo.GetValue(data);
+                if (format != null)
+                    cells.SetCellValue(row - 1, col - 1, format(value));
+                else
+                    cells.SetCellValue(row - 1, col - 1, value);
             }
         }
     }

@@ -72,6 +72,8 @@
      <Compile Include="Assets\Scripts\LegionSoldier.cs" />
      <Compile Include="Assets\Scripts\Ext.cs" />
      <Compile Include="Assets\Scripts\Config\LevelConfig.cs" />
+     <Compile Include="Assets\Scripts\LegionRoad.cs" />
+     <Compile Include="Assets\Scripts\LegionRoadManager.cs" />
      <None Include="Assets\AssetOriginal\Shader\Model.shader" />
      <None Include="Assets\AssetOriginal\ToonShading\Shaders\JS_BL.shader" />
      <None Include="Assets\AssetOriginal\ToonShading\Shaders\URP_CustomToonOutline.shader" />

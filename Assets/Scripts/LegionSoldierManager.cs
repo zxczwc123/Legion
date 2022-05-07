@@ -21,7 +21,7 @@ public class LegionSoldierManager : LegionPool<LegionSoldier>
                 {
                     m_instance = obj.AddComponent<LegionSoldierManager>();
                 }
-                var poolObj = GameObject.Find("Soldier");
+                var poolObj = Resources.Load<GameObject>("Prefabs/Soldier");
                 m_instance.Init(poolObj);
             }
             return m_instance;
@@ -39,7 +39,7 @@ public class LegionSoldierManager : LegionPool<LegionSoldier>
             return;
         }
         m_instance = this;
-        var poolObj = GameObject.Find("Soldier");
+        var poolObj = Resources.Load<GameObject>("Prefabs/Soldier");
         Init(poolObj);
     }
 }
