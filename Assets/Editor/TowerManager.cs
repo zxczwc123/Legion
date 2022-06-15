@@ -5,25 +5,35 @@ namespace Editor
 {
     public class TowerManager
     {
-        public static EditTower CreateTower(LevelConfig towerItem)
+        public static LegionTower CreateTower(LevelTowerConfig towerItem)
         {
-            var tower = new EditTower();
+            var towerConfigDict = ConfigManager.GetDict<TowerConfig>();
+            var towerConfig = towerConfigDict[towerItem.TowerId];
+            var tower = CreateTowerInstance(towerConfig);
             var towerInfo = new TowerInfo();
             towerInfo.Init(towerItem);
             tower.Init(towerInfo);
             return tower;
         }
 
-        public static EditTower CreateTower(TowerConfig towerConfig)
+        public static LegionTower CreateTower(TowerConfig towerConfig)
         {
-            var tower = new EditTower();
+            var tower = CreateTowerInstance(towerConfig);
             var towerInfo = new TowerInfo();
-            var towerItem = new LevelConfig();
-            towerItem.Id = 0;
-            towerItem.TowerId = towerConfig.Id;
-            towerItem.Pos = Vector3.zero;
-            towerInfo.Init(towerItem);
+            var levelConfig = new LevelTowerConfig();
+            levelConfig.Id = 0;
+            levelConfig.TowerId = towerConfig.Id;
+            levelConfig.Pos = Vector3.zero;
+            towerInfo.Init(levelConfig);
             tower.Init(towerInfo);
+            return tower;
+        }
+
+        public static LegionTower CreateTowerInstance(TowerConfig towerConfig)
+        {
+            var towerPrefab = Resources.Load<GameObject>(towerConfig.Prefab);
+            var gameObject = GameObject.Instantiate(towerPrefab, LegionEditorWindow.EditRoot.transform);
+            var tower = gameObject.GetComponent<LegionTower>();
             return tower;
         }
     }

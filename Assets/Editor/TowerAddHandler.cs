@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class TowerAddHandler
 {
-    public static EditTower dragTarget;
+    public static LegionTower dragTarget;
 
     public static void OnDragUpdated()
     {
         if (dragTarget == null)
         {
-            var index = (int)DragAndDrop.GetGenericData("index");
+            var index = (int) DragAndDrop.GetGenericData("index");
             var towerConfig = ConfigManager.GetDict<TowerConfig>();
             var config = towerConfig.ToList()[index].Value;
             dragTarget = TowerManager.CreateTower(config);

@@ -1,0 +1,13 @@
+{
+    "name": "Framework-editor",
+    "references": [
+        "Framework",
+        "ILRuntime"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 1680421538
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: af9e8cf58241c031faee5709fd99991a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: db12a48af153eeaa681fc331e9dcacb0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 102
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 94fa2d0c09ef4a7a8b1556a0e1336ee9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2b6395855f524874db4b88b113469f6f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Prefabs/Tower1.prefab
+Dependencies:
+- E:/Zxc/Legion/Assets/StreamingAssets/AssetBundle/prefabs/map01_building01_01.ab

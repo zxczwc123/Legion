@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class TowerDragHandler
 {
-    public static EditTower dragTarget;
+    public static LegionTower dragTarget;
 
     private static Vector3 prePosition;
 
     private static Vector3 startPosition;
-    
-    public static void OnMouseDown(List<EditTower> towers)
+
+    public static void OnMouseDown(List<LegionTower> towers)
     {
-        RaycastHelper.RaycastTower(towers, out EditTower tower);
+        RaycastHelper.RaycastTower(towers, out var tower);
         dragTarget = tower;
         if (dragTarget == null)
         {
@@ -26,16 +26,13 @@ public class TowerDragHandler
 
     public static void OnMouseDrag()
     {
-        if (dragTarget == null)
-        {
-            return;
-        }
+        if (dragTarget == null) return;
         var e = Event.current;
         var curPosition = RaycastHelper.RaycastYZeroPlane(e.mousePosition);
         var deltaPosition = curPosition - prePosition;
         dragTarget.gameObject.transform.position += deltaPosition;
         prePosition = curPosition;
-        
+
         dragTarget.UpdateRoad();
     }
 

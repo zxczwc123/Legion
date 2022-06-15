@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 2106368609
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bbf48811b7ba8882531c32d054e022b0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b9610c220437f4e948ffd9722e9823a0
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 96e03230d44a44038ba1578749430204, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Config/LegionConfig.asset
+Dependencies: []

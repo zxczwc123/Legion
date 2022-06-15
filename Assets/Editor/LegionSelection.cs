@@ -2,11 +2,11 @@
 
 public class LegionSelection
 {
-
     public static Action OnSelectTowerChange;
-    
-    private static EditTower selectTower;
-    public static EditTower SelectTower
+
+    private static LegionTower selectTower;
+
+    public static LegionTower SelectTower
     {
         set
         {
@@ -16,9 +16,6 @@ public class LegionSelection
                 if (OnSelectTowerChange != null) OnSelectTowerChange();
             }
         }
-        get
-        {
-            return selectTower;
-        }
+        get => selectTower;
     }
 }

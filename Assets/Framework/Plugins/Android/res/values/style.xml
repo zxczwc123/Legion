@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="UnityThemeSelector" parent="BaseUnityTheme">
+    <item name="android:windowBackground">@android:color/black</item>
+  </style>
+  <style name="BaseUnityTheme" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
+  </style>
+  <style name="UnityThemeSelector.Translucent" parent="@style/UnityThemeSelector">
+    <!--此主题为了解决问题 导包必须重新复制此主题样式：Only fullscreen opaque activities can request orientation-->
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowDisablePreview">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+  </style>
+</resources>

@@ -55,15 +55,19 @@
      <Compile Include="Assets\Scripts\LegionPath.cs" />
      <Compile Include="Assets\Scripts\LegionGame.cs" />
      <Compile Include="Assets\Scripts\TowerColorSetter.cs" />
+     <Compile Include="Assets\Scripts\LegionRoadManager.cs" />
+     <Compile Include="Assets\Scripts\IRoadManager.cs" />
      <Compile Include="Assets\Scripts\LegionPathManager.cs" />
      <Compile Include="Assets\Scripts\LegionAI.cs" />
      <Compile Include="Assets\Scripts\LegionVOObject.cs" />
      <Compile Include="Assets\Scripts\LegionType.cs" />
      <Compile Include="Assets\Scripts\LegionPool.cs" />
+     <Compile Include="Assets\Scripts\ConfigManager.cs" />
      <Compile Include="Assets\Scripts\Data\TowerInfo.cs" />
+     <Compile Include="Assets\Scripts\GameObjectPool.cs" />
      <Compile Include="Assets\Scripts\LegionTower.cs" />
-     <Compile Include="Assets\Scripts\Config\TowerConfig.cs" />
      <Compile Include="Assets\Scripts\LegionUtil.cs" />
+     <Compile Include="Assets\Scripts\LegionRoad.cs" />
      <Compile Include="Assets\Scripts\LegionProAI.cs" />
      <Compile Include="Assets\Scripts\LegionTowerManager.cs" />
      <Compile Include="Assets\Scripts\LegionVO.cs" />
@@ -71,11 +75,10 @@
      <Compile Include="Assets\Scripts\LegionSoldierManager.cs" />
      <Compile Include="Assets\Scripts\LegionSoldier.cs" />
      <Compile Include="Assets\Scripts\Ext.cs" />
-     <Compile Include="Assets\Scripts\Config\LevelConfig.cs" />
-     <Compile Include="Assets\Scripts\LegionRoad.cs" />
-     <Compile Include="Assets\Scripts\LegionRoadManager.cs" />
      <None Include="Assets\AssetOriginal\Shader\Model.shader" />
+     <None Include="Assets\Other\Resources\Shader\CG_Unit.shader" />
      <None Include="Assets\AssetOriginal\ToonShading\Shaders\JS_BL.shader" />
+     <None Include="Assets\link.xml" />
      <None Include="Assets\AssetOriginal\ToonShading\Shaders\URP_CustomToonOutline.shader" />
      <None Include="Assets\AssetOriginal\Shader\Model2.shader" />
      <None Include="Assets\AssetOriginal\Shader\AddUV_Mask.shader" />
@@ -304,8 +307,32 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
+ <Reference Include="Excel">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/Excel.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="ILRuntime.Mono.Cecil.Mdb">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/ILRuntime/Plugins/ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
+ </Reference>
+ <Reference Include="ILRuntime.Mono.Cecil.Pdb">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/ILRuntime/Plugins/ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/DOTween/DOTween50.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>E:/Zxc/Legion/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="ILRuntim.Mono.Cecil">
+ <HintPath>E:/Zxc/Legion/Assets/Framework/Plugins/ILRuntime/Plugins/ILRuntim.Mono.Cecil.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity 2020.3.32f1c1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -667,9 +694,6 @@
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RemoteConfig.Editor">
- <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
@@ -679,8 +703,14 @@
  <Reference Include="Unity.Searcher.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Runtime">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RemoteConfig.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -729,6 +759,34 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Framework-editor.csproj">
+      <Project>{0d9aaed9-c7ac-7515-c6b0-1eb9264d6306}</Project>
+      <Name>Framework-editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Framework.csproj">
+      <Project>{052fec7a-c4b4-df40-1b8d-a56cfe9397c3}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="spine-unity.csproj">
+      <Project>{0ef9b47e-3432-cb41-6781-1ec763149c2a}</Project>
+      <Name>spine-unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="ILRuntime.csproj">
+      <Project>{303b006b-63f6-58ad-eaa6-81dfa9ce42d0}</Project>
+      <Name>ILRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Reporter-Editor.csproj">
+      <Project>{d0265d1e-5960-ac83-11ee-8418182b9a1a}</Project>
+      <Name>Reporter-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="spine-unity-editor.csproj">
+      <Project>{45a9fc5e-fd4e-1959-0878-6ff70035dc10}</Project>
+      <Name>spine-unity-editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Game.csproj">
+      <Project>{d099aef4-14c9-42da-082f-3acd72c4305c}</Project>
+      <Name>Game</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

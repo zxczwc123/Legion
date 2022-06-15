@@ -5,12 +5,11 @@ namespace Editor
 {
     public class DelHandler
     {
-        public static void OnMouseUp(List<EditTower> towers)
+        public static void OnMouseUp(List<LegionTower> towers)
         {
-            RaycastHelper.RaycastTower(towers, out EditTower tower);
+            RaycastHelper.RaycastTower(towers, out var tower);
             if (tower == null)
             {
-                
             }
             else
             {

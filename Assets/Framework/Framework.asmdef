@@ -1,0 +1,11 @@
+{
+    "name": "Framework",
+    "references": [
+        "ILRuntime",
+        "spine-unity"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true
+}

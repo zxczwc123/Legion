@@ -7,31 +7,28 @@ namespace Editor
     public class CustomGUILayout
     {
         public static int AspectSelectionGridImageAndText(int selected, GUIContent[] textures, int approxSize,
-            GUIStyle style, string emptyString )
+            GUIStyle style, string emptyString)
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.MinHeight(10));
-            int selectIndex = 0;
+            var selectIndex = 0;
 
             if (textures.Length != 0)
             {
-                Rect rect = GetBrushAspectRect(textures.Length, approxSize, 12, out int xCount);
+                var rect = GetBrushAspectRect(textures.Length, approxSize, 12, out var xCount);
 
-                Event evt = Event.current;
+                var evt = Event.current;
                 var cid = EditorGUIUtility.GetControlID(FocusType.Passive);
                 var type = evt.GetTypeForControl(cid);
                 switch (type)
                 {
                     case EventType.MouseDown:
-                        if (evt.clickCount == 2 && rect.Contains(evt.mousePosition))
-                        {
-                            evt.Use();
-                        }
+                        if (evt.clickCount == 2 && rect.Contains(evt.mousePosition)) evt.Use();
                         break;
                     case EventType.MouseUp:
                         DragAndDrop.SetGenericData("TowerTag", null);
                         break;
                     case EventType.MouseDrag:
-                       
+
                         if (rect.Contains(evt.mousePosition))
                         {
                             var index = GetDragRectIndex(evt.mousePosition, rect, textures.Length, xCount);
@@ -72,11 +69,11 @@ namespace Editor
         private static Rect GetBrushAspectRect(int elementCount, int approxSize, int extraLineHeight, out int xCount)
         {
             xCount = (int) Mathf.Ceil((EditorGUIUtility.currentViewWidth - 20) / approxSize);
-            int yCount = elementCount / xCount;
+            var yCount = elementCount / xCount;
             if (elementCount % xCount != 0)
                 yCount++;
-            Rect r1 = GUILayoutUtility.GetAspectRect(xCount / (float) yCount);
-            Rect r2 = GUILayoutUtility.GetRect(10, extraLineHeight * yCount);
+            var r1 = GUILayoutUtility.GetAspectRect(xCount / (float) yCount);
+            var r2 = GUILayoutUtility.GetRect(10, extraLineHeight * yCount);
             r1.height += r2.height;
             return r1;
         }
@@ -94,10 +91,7 @@ namespace Editor
                 itemRect.y += row * itemHeight;
                 itemRect.width = itemWidth;
                 itemRect.height = itemHeight;
-                if (itemRect.Contains(mousePosition))
-                {
-                    return i;
-                }
+                if (itemRect.Contains(mousePosition)) return i;
             }
             return -1;
         }

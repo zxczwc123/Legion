@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 1226376362
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: shaders/ui.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: config.ab
+      Dependencies: {}
+    Info_2:
+      Name: prefabs/map01_building01_01.ab
+      Dependencies: {}
+    Info_3:
+      Name: prefabs/path.ab
+      Dependencies: {}
+    Info_4:
+      Name: prefabs/road.ab
+      Dependencies:
+        Dependency_0: textures.ab
+    Info_5:
+      Name: prefabs/soldier.ab
+      Dependencies: {}
+    Info_6:
+      Name: prefabs/tower.ab
+      Dependencies:
+        Dependency_0: prefabs/map01_building01_01.ab
+    Info_7:
+      Name: prefabs/tower1.ab
+      Dependencies:
+        Dependency_0: prefabs/map01_building01_01.ab
+    Info_8:
+      Name: scenes.ab
+      Dependencies: {}
+    Info_9:
+      Name: textures.ab
+      Dependencies: {}
