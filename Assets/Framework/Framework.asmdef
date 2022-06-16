@@ -1,11 +1,19 @@
 {
     "name": "Framework",
+    "rootNamespace": "",
     "references": [
         "ILRuntime",
-        "spine-unity"
+        "spine-unity",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": true
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -37,7 +37,7 @@ namespace Framework.Core {
             //工程目录在Assets\Samples\ILRuntime\1.6\Demo\HotFix_Project~
             //以下加载写法只为演示，并没有处理在编辑器切换到Android平台的读取，需要自行修改
             var dllPath = "";
-            if (Engine.instance.isHotFix) {
+            if (Engine.appSettings.isHotFix) {
                 HandleVersionAssets();
 #if UNITY_ANDROID
                 dllPath = PathUtility.GetAssetsPlatformPath(PathUtility.GetHotFixDllFileName());
@@ -96,7 +96,7 @@ namespace Framework.Core {
             new VersionHandler().HandleAssets();
         }
 
-        void InitializeILRuntime() {
+        private void InitializeILRuntime() {
 #if DEBUG && (UNITY_EDITOR || UNITY_ANDROID || UNITY_IPHONE)
             //由于Unity的Profiler接口只允许在主线程使用，为了避免出异常，需要告诉ILRuntime主线程的线程ID才能正确将函数运行耗时报告给Profiler
             m_AppDomain.UnityMainThreadID = System.Threading.Thread.CurrentThread.ManagedThreadId;
@@ -104,7 +104,6 @@ namespace Framework.Core {
             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(m_AppDomain);
 
             //这里做一些ILRuntime的注册，HelloWorld示例暂时没有需要注册的
-            m_AppDomain.RegisterCrossBindingAdaptor(new ViewAdapter());
             m_AppDomain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
             m_AppDomain.RegisterCrossBindingAdaptor(new UnityEventAdapter());
 
@@ -218,7 +217,7 @@ namespace Framework.Core {
         }
 
         public object GetObject(string type) {
-            if (Engine.instance.isDLL) {
+            if (Engine.appSettings.isDLL) {
                 ILTypeInstance instance = m_AppDomain.Instantiate(type);
 
                 if (instance != null) {
@@ -236,6 +235,20 @@ namespace Framework.Core {
                     throw new Exception(string.Format("type: {0} can not found", type));
                 }
                 return Activator.CreateInstance(objectType);
+            }
+        }
+
+        public void StartGameEngine()
+        {
+            var gameEngine = HotfixManager.Instance.GetObject("Game.GameEngine");
+            if (Engine.appSettings.isDLL) {
+                
+            } 
+            else
+            {
+                Type type = gameEngine.GetType();
+                MethodInfo mi = type.GetMethod("Start");
+                mi.Invoke(gameEngine, null);
             }
         }
 

@@ -7,25 +7,27 @@
 
 using System;
 using System.Collections.Generic;
+using Framework.Core;
+using Game.Common;
 using UnityEngine;
 
-namespace Framework.Core
+namespace Game.Framework
 {
-    public class EventManager : Manager<EventManager>
+    public class EventManager : MonoSingleton<EventManager>
     {
         public static void Post(string eventName, Bundle bundle = null)
         {
-            Instance.PostInternal(eventName, bundle);
+            instance.PostInternal(eventName, bundle);
         }
 
         public static void Register(string eventName, Action<Bundle> callback = null)
         {
-            Instance.RegisterInternal(eventName, callback);
+            instance.RegisterInternal(eventName, callback);
         }
 
         public static void UnRegister(string eventName, Action<Bundle> callback = null)
         {
-            Instance.UnRegisterInternal(eventName, callback);
+            instance.UnRegisterInternal(eventName, callback);
         }
 
         /// <summary>
@@ -111,16 +113,9 @@ namespace Framework.Core
             }
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
-            m_eventDict.Clear();
-        }
-
-        /// <summary>
-        /// 卸载管理器
-        /// </summary>
-        public override void Dispose()
-        {
+            base.OnDestroy();
             m_eventDict.Clear();
         }
 

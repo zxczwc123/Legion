@@ -27,7 +27,7 @@ namespace Framework.Core.UI {
         private Vector2 offset = new Vector2 (45, 0);
 
         protected override void Start () {
-            var rectViewRoot = ViewManager.Instance.viewRoot;
+            var rectViewRoot = (RectTransform)transform;
             Vector2 size = new Vector2 (Screen.width, Screen.height);
             if (Screen.orientation == ScreenOrientation.Portrait) {
                 radio = size.y / size.x;

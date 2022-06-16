@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Framework.Core;
+using Game.Common;
+using Game.Framework.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Framework.Core
+namespace Game.Framework
 {
     public enum LoadType {
         Sync = 0,
         Async = 1
     }
 
-    public class ModuleManager : Manager<ModuleManager> {
+    public class ModuleManager : MonoSingleton<ModuleManager> {
 
         public Action OnSceneModuleLoadStart;
 
@@ -25,22 +28,22 @@ namespace Framework.Core
         private Dictionary<string, Module> m_LoadedModuleDict = new Dictionary<string, Module> ();
 
 
-        private ModuleConfigHandler m_ModuleConfig;
+        private ModuleConfigManager m_ModuleConfig;
 
-        protected override void Init()
+        protected override void OnInit()
         {
-            base.Init();
-            m_ModuleConfig = new ModuleConfigHandler();
+            m_ModuleConfig = new ModuleConfigManager();
         }
 
         /// <summary>
         /// 销毁的时候注销所有模块
         /// </summary>
-        private void OnDestroy() {
+        protected override void OnDestroy() {
             foreach (var loadedModuleName in m_LoadedModuleDict.Keys) {
                 var loadModule = m_LoadedModuleDict[loadedModuleName];
                 loadModule.OnUnload(null);
             }
+            m_LoadedModuleDict.Clear ();
             m_LoadedModuleDict = null;
         }
 
@@ -91,7 +94,7 @@ namespace Framework.Core
                         if(needUnloadModule.dependViews != null) {
                             for(var index = 0;index < needUnloadModule.dependViews.Length; index++) {
                                 var unloadView = needUnloadModule.dependViews[index];
-                                ViewManager.Instance.UnloadViewEntity(unloadView);
+                                UIManager.instance.UnloadViewEntity(unloadView);
                             }
                         }
                         needUnloadModule.OnUnload(null);
@@ -143,7 +146,7 @@ namespace Framework.Core
                         if (needUnloadModule.dependViews != null) {
                             for (var index = 0; index < needUnloadModule.dependViews.Length; index++) {
                                 var unloadView = needUnloadModule.dependViews[index];
-                                ViewManager.Instance.UnloadViewEntity(unloadView);
+                                UIManager.instance.UnloadViewEntity(unloadView);
                             }
                         }
                         if (needUnloadModule.isOpen) {
@@ -189,7 +192,7 @@ namespace Framework.Core
             }
             for(var i = 0; i < needLoadViews.Count; i++) {
                 var needLoadView = needLoadViews[i];
-                yield return ViewManager.Instance.LoadViewEntityAsync(needLoadView);
+                yield return UIManager.instance.LoadViewEntityAsync(needLoadView);
             }
             for(var i = 0; i < needLoadDependModules.Count; i++) {
                 var needLoadDependModule = needLoadDependModules[i];
@@ -234,7 +237,7 @@ namespace Framework.Core
             }
             for (var i = 0; i < needLoadViews.Count; i++) {
                 var needLoadView = needLoadViews[i];
-                ViewManager.Instance.LoadViewEntity(needLoadView);
+                UIManager.instance.LoadViewEntity(needLoadView);
             }
             for (var i = 0; i < needLoadDependModules.Count; i++) {
                 var needLoadDependModule = needLoadDependModules[i];
@@ -359,7 +362,7 @@ namespace Framework.Core
         /// <param name="bundle"></param>
         /// <returns></returns>
         private Module CreateModule (ModuleInfo moduleInfo, Bundle bundle) {
-            var moduleObj = HotfixManager.Instance.GetObject (moduleInfo.type);
+            var moduleObj = Activator.CreateInstance(moduleInfo.type);
             Module module = moduleObj as Module;
             if (module != null) {
                 module.moduleName = moduleInfo.name;
@@ -386,15 +389,6 @@ namespace Framework.Core
             }
             var module = m_LoadedModuleDict[moduleName];
             return module.isOpen;
-        }
-
-       
-
-        /// <summary>
-        /// 卸载管理器
-        /// </summary>
-        public override void Dispose () {
-            m_LoadedModuleDict.Clear ();
         }
     }
 }

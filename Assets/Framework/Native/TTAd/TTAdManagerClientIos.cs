@@ -400,49 +400,49 @@ namespace Framework.Native.TTAd {
         }
 
         private void OnBannerAdViewDidLoadCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdLoad != null) ttAdManagerIosClient.OnBannerAdLoad(BANNER_LOADED);
             });
         }
 
         private void OnBannerAdViewDidLoadFailCallback( int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdLoad(BANNER_LOADFAILED);
             });
         }
 
         private void OnBannerAdViewRenderSuccessCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(BANNER_RENDERSUCESS);
             });
         }
 
         private void OnBannerAdViewRenderFailCallback(int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(BANNER_RENDERFAILED);
             });
         }
 
         private void OnBannerAdViewWillBecomVisibleCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(BANNER_SHOW);
             });
         }
 
         private void OnBannerAdViewDidClickCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(BANNER_CLICKED);
             });
         }
 
         private void OnBannerAdViewDislikeWithReasonCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(100);
             });
         }
 
         private void OnBannerAdViewDidCloseOtherControllerCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnBannerAdAction != null) ttAdManagerIosClient.OnBannerAdAction(101);
             });
         }
@@ -458,61 +458,61 @@ namespace Framework.Native.TTAd {
 
 
         private void OnRewardVideoDidLoadCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdLoad(REWARDVIDEO_LOADED);
             });
         }
 
         private void OnRewardVideoDidLoadFailCallback( int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdAction != null) ttAdManagerIosClient.OnRewardVideoAdLoad(REWARDVIDEO_LOADFAILED);
             });
         }
 
         private void OnRewardVideoDidCloseCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_CLOSE);
             });
         }
 
         private void OnRewardVideoDidVisibleCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_SHOW);
             });
         }
 
         private void OnRewardVideoRenderSuccessCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(100);
             });
         }
 
         private void OnRewardVideoRenderFailCallback(int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_LOADED);
             });
         }
 
         private void OnRewardVideoDidClickCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_BARCLICK);
             });
         }
 
         private void OnRewardVideoDidClickSkipCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_SKIPPED);
             });
         }
 
         private void OnRewardVideoServerRewardDidSuccessCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(REWARDVIDEO_REWARD);
             });
         }
 
         private void OnRewardVideoServerRewardDidFailCallback(int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnRewardVideoAdAction(101);
             });
         }
@@ -529,49 +529,49 @@ namespace Framework.Native.TTAd {
         }
 
         private void OnFullVideoDidLoadCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnFullVideoAdLoad(FULLVIDEO_LOADED);
             });
         }
 
         private void OnFullVideoDidLoadFailCallback(int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnRewardVideoAdLoad != null) ttAdManagerIosClient.OnFullVideoAdLoad(FULLVIDEO_LOADFAILED);
             });
         }
 
         private void OnFullVideoRenderSuccessCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(100);
             });
         }
 
         private void OnFullVideoRenderFailCallback(int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(101);
             });
         }
 
         private void OnFullVideoDidVisibleCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(FULLVIDEO_SHOW);
             });
         }
 
         private void OnFullVideoDidCloseCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(FULLVIDEO_CLOSE);
             });
         }
 
         private void OnFullVideoDidClickCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(102);
             });
         }
 
         private void OnFullVideoDidClickSkipCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnFullVideoAdAction != null) ttAdManagerIosClient.OnFullVideoAdAction(FULLVIDEO_SKIPPED);
             });
         }
@@ -587,43 +587,43 @@ namespace Framework.Native.TTAd {
         }
 
         private void OnInterstitialDidLoadCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdLoad != null) ttAdManagerIosClient.OnInterstitialAdLoad(INTERSTITIAL_LOADED);
             });
         }
 
         private void OnInterstitialDidLoadFailCallback( int code,string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdLoad != null) ttAdManagerIosClient.OnInterstitialAdLoad(INTERSTITIAL_LOADFAILED);
             });
         }
 
         private void OnInterstitialRenderSuccessCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdAction != null) ttAdManagerIosClient.OnInterstitialAdAction(INTERSTITIAL_RENDERSUCCESS);
             });
         }
 
         private void OnInterstitialRenderFailCallback(int code, string msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdAction != null) ttAdManagerIosClient.OnInterstitialAdAction(INTERSTITIAL_RENDERFAILED);
             });
         }
 
         private void OnInterstitialWillVisibleCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdAction != null) ttAdManagerIosClient.OnInterstitialAdAction(INTERSTITIAL_SHOW);
             });
         }
 
         private void OnInterstitialDidCloseCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdAction != null) ttAdManagerIosClient.OnInterstitialAdAction(INTERSTITIAL_DISMISSED);
             });
         }
 
         private void OnInterstitialDidClickCallback() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (ttAdManagerIosClient.OnInterstitialAdAction != null) ttAdManagerIosClient.OnInterstitialAdAction(INTERSTITIAL_CLICKED);
             });
         }

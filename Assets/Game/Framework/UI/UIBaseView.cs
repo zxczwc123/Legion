@@ -41,7 +41,7 @@ namespace Game.Framework.UI
 
         public void BindWidget(RectTransform trans)
         {
-            if (trans.parent != ViewManager.Instance.viewRoot)
+            if (trans.parent != UIManager.instance.viewRoot)
             {
                 throw new Exception(string.Format("{0} not view transform", GetType().Name));
             }
@@ -55,7 +55,7 @@ namespace Game.Framework.UI
         /// </summary>
         public void Show()
         {
-            UIManager.Instance.OnViewShow(this);
+            UIManager.instance.OnViewShow(this);
         }
         
         /// <summary>
@@ -65,7 +65,7 @@ namespace Game.Framework.UI
         {
             if (!transform.gameObject.activeSelf)
                 return;
-            UIManager.Instance.OnViewHide(this);
+            UIManager.instance.OnViewHide(this);
         }
 
         protected void StartCoroutine(IEnumerator routine)

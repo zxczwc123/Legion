@@ -37,7 +37,10 @@ namespace Game.Common {
             OnInit();
         }
 
-        protected abstract void OnInit();
+        protected virtual void OnInit()
+        {
+            
+        }
 
         public void StartCoroutine(IEnumerator routine) {
             m_Adapter.StartCoroutine(routine);

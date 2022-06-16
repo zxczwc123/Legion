@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Game.Framework.UI {
 
-    public class UIManager : MonoAdapterManager<UIManager> {
+    public class UIManager : MonoSingleton<UIManager> {
 
         /// <summary>
         /// 界面父节点
@@ -37,7 +37,7 @@ namespace Game.Framework.UI {
         public RectTransform viewRoot {
             get {
                 if (m_viewRoot == null) {
-                    var engineRoot = FrameworkEngine.Instance.gameObject.transform;
+                    var engineRoot = Engine.instance.gameObject.transform;
                     m_viewRoot = engineRoot.Find("Canvas/Pannel/ViewRoot") as RectTransform;
                 }
                 return m_viewRoot;
@@ -51,7 +51,7 @@ namespace Game.Framework.UI {
         public RectTransform viewRootMenu {
             get {
                 if (m_viewRootMenu == null) {
-                    var engineRoot = FrameworkEngine.Instance.gameObject.transform;
+                    var engineRoot = Engine.instance.gameObject.transform;
                     m_viewRootMenu = engineRoot.Find("Canvas/Panel/ViewRootMenu") as RectTransform;
                 }
                 return m_viewRootMenu;
@@ -67,7 +67,7 @@ namespace Game.Framework.UI {
         public Camera mainCamera {
             get {
                 if (m_mainCamera == null) {
-                    var engineRoot = FrameworkEngine.Instance.gameObject.transform;
+                    var engineRoot = Engine.instance.gameObject.transform;
                     m_mainCamera = engineRoot.Find("MainCamera").GetComponent<Camera>();
                 }
                 return m_mainCamera;

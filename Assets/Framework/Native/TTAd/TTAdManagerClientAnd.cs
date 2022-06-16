@@ -100,91 +100,91 @@ namespace Framework.Native.TTAd {
         }
 
         public void onBannerFailed(int code, String msg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdLoad != null) this.OnBannerAdLoad(TTAdManager.BANNER_LOADFAILED);
             });
         }
 
         public void onBannerLoaded() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdLoad != null) this.OnBannerAdLoad(TTAdManager.BANNER_LOADED);
             });
         }
 
         public void onBannerClicked() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdAction != null) this.OnBannerAdAction(TTAdManager.BANNER_LOADED);
             });
         }
 
         public void onBannerShow() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdAction != null) this.OnBannerAdAction(TTAdManager.BANNER_LOADED);
             });
         }
 
         public void onBannerRenderFailed(String msg, int code) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdAction != null) this.OnBannerAdAction(TTAdManager.BANNER_LOADED);
             });
         }
 
         public void onBannerRenderSuccess() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnBannerAdAction != null) this.OnBannerAdAction(TTAdManager.BANNER_LOADED);
             });
         }
 
         public void onRewardVideoLoadFailed(int code, String message) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdLoad != null) this.OnRewardVideoAdLoad(TTAdManager.REWARDVIDEO_LOADFAILED);
             });
         }
 
         public void onRewardVideoLoaded() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdLoad != null) this.OnRewardVideoAdLoad(TTAdManager.REWARDVIDEO_LOADED);
             });
         }
 
         public void onRewardVideoShow() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_SHOW);
             });
         }
 
         public void onRewardVideoBarClick() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_BARCLICK);
             });
         }
 
         public void onRewardVideoClose() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_CLOSE);
             });
         }
 
         public void onRewardVideoComplete() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_COMPLETE);
             });
         }
 
         public void onRewardVideoError() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_ERROR);
             });
         }
 
         public void onRewardVideoRewardVertify(bool rewardVerify, int rewardAmount, String rewardName, int errorCode, String errorMsg) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_REWARD);
             });
         }
 
         public void onRewardVideoSkipped() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.OnRewardVideoAdAction != null) this.OnRewardVideoAdAction(TTAdManager.REWARDVIDEO_SKIPPED);
             });
         }
@@ -279,43 +279,43 @@ namespace Framework.Native.TTAd {
         }
 
         public void onFullVideoLoadFailed(int code, String message) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdLoad != null) this.managerClient.OnFullVideoAdLoad(TTAdManager.FULLVIDEO_LOADFAILED);
             });
         }
 
         public void onFullVideoLoaded() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdLoad != null) this.managerClient.OnFullVideoAdLoad(TTAdManager.FULLVIDEO_LOADED);
             });
         }
 
         public void onFullVideoShow() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdAction != null) this.managerClient.OnFullVideoAdAction(TTAdManager.FULLVIDEO_SHOW);
             });
         }
 
         public void onFullVideoAdVideoBarClick() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdAction != null) this.managerClient.OnFullVideoAdAction(TTAdManager.FULLVIDEO_BARCLICK);
             });
         }
 
         public void onFullVideoAdClose() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdAction != null) this.managerClient.OnFullVideoAdAction(TTAdManager.FULLVIDEO_CLOSE);
             });
         }
 
         public void onFullVideoComplete() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdAction != null) this.managerClient.OnFullVideoAdAction(TTAdManager.FULLVIDEO_COMPLETE);
             });
         }
 
         public void onFullVideoSkipped() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnFullVideoAdAction != null) this.managerClient.OnFullVideoAdAction(TTAdManager.FULLVIDEO_SKIPPED);
             });
         }
@@ -330,43 +330,43 @@ namespace Framework.Native.TTAd {
         }
 
         public void onInterstitialLoadFailed(int code, String message) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdLoad != null) this.managerClient.OnInterstitialAdLoad(TTAdManager.INTERSTITIAL_LOADFAILED);
             });
         }
 
         public void onInterstitialLoaded() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdLoad != null) this.managerClient.OnInterstitialAdLoad(TTAdManager.INTERSTITIAL_LOADED);
             });
         }
 
         public void onInterstitialDismissed() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdAction != null) this.managerClient.OnInterstitialAdAction(TTAdManager.INTERSTITIAL_DISMISSED);
             });
         }
 
         public void onInterstitialClicked() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdAction != null) this.managerClient.OnInterstitialAdAction(TTAdManager.INTERSTITIAL_CLICKED);
             });
         }
 
         public void onInterstitialShow() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdAction != null) this.managerClient.OnInterstitialAdAction(TTAdManager.INTERSTITIAL_SHOW);
             });
         }
 
         public void onInterstitialRenderFailed(String message, int code) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdAction != null) this.managerClient.OnInterstitialAdAction(TTAdManager.INTERSTITIAL_RENDERFAILED);
             });
         }
 
         public void onInterstitialRenderSuccess() {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 if (this.managerClient.OnInterstitialAdAction != null) this.managerClient.OnInterstitialAdAction(TTAdManager.INTERSTITIAL_RENDERSUCCESS);
             });
         }

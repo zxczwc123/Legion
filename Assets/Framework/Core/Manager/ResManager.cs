@@ -148,7 +148,7 @@ namespace Framework.Core {
                 return null;
             }
 #if UNITY_EDITOR
-            if (Engine.instance.isAssetBundle) {
+            if (Engine.appSettings.isAssetBundle) {
                 return LoadFromAssetBundle<T>(path);
             } else {
                 return LoadFormRes<T>(path);
@@ -166,7 +166,7 @@ namespace Framework.Core {
         /// <param name="resourseHolder"></param>
         /// <returns></returns>
         public IEnumerator LoadAsync<T>(string path, ResourcesHolder<T> resourseHolder) where T : UnityEngine.Object {
-            if (Engine.instance.isAssetBundle) {
+            if (Engine.appSettings.isAssetBundle) {
                 // assetbundle打包后资源路径全部为小写
                 string assetBundleName = null;
                 string assetName = null;

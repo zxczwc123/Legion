@@ -36,7 +36,7 @@ namespace Framework.Utility
         /// </summary>
         public static string GetAssetsPlatformPath(string fileName)
         {
-            if (FrameworkEngine.Instance.isHotFix)
+            if (Engine.appSettings.isHotFix)
             {
                 var filePath = Path.Combine(GetPersistentAssetPlatformPath(), fileName);
                 if (File.Exists(filePath))

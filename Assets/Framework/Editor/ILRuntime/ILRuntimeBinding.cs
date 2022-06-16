@@ -20,7 +20,7 @@ public class ILRuntimeBinding {
             domain.LoadAssembly (fs);
 
             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(domain);
-            //Crossbind Adapter is needed to generate the correct binding code
+            //Cross bind Adapter is needed to generate the correct binding code
             InitILRuntime (domain);
             ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode (domain, "Assets/Framework/ILRuntime/Generated");
         }
@@ -33,8 +33,6 @@ public class ILRuntimeBinding {
     static void InitILRuntime (ILRuntime.Runtime.Enviorment.AppDomain domain) {
         //这里需要注册所有热更DLL中用到的跨域继承Adapter，否则无法正确抓取引用
         domain.RegisterCrossBindingAdaptor (new UnityEventAdapter ());
-        domain.RegisterCrossBindingAdaptor (new ViewAdapter ());
-        domain.RegisterCrossBindingAdaptor (new ModuleAdapter ());
         domain.RegisterCrossBindingAdaptor (new CoroutineAdapter ());
         
 

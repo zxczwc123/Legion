@@ -61,7 +61,6 @@
      <Compile Include="Assets\Framework\Native\SplashHandler\SplashHandler.cs" />
      <Compile Include="Assets\Framework\Native\TTAd\TTAdManagerClientIos.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoMemberAttribute.cs" />
-     <Compile Include="Assets\Framework\Core\AudioManager.cs" />
      <Compile Include="Assets\Framework\Native\AdManager\AdsInterstitial.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\DateTimeSerializer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\BlobSerializer.cs" />
@@ -84,14 +83,13 @@
      <Compile Include="Assets\Framework\I18n\I18nLanguage.cs" />
      <Compile Include="Assets\Framework\Utility\Md5Utility.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\Int16Serializer.cs" />
-     <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoException.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\ImmutableCollectionDecorator.cs" />
+     <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoException.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\StringSerializer.cs" />
      <Compile Include="Assets\Framework\Extention\StringExtension.cs" />
      <Compile Include="Assets\Framework\Native\WeChat\WeChatMgr.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\IProtoSerializer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\CompiledSerializer.cs" />
-     <Compile Include="Assets\Framework\Core\IModule.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\PropertyDecorator.cs" />
      <Compile Include="Assets\Framework\Net\HttpClient.cs" />
      <Compile Include="Assets\Framework\Net\Server\ISocketServer.cs" />
@@ -132,12 +130,12 @@
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\SubType.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoWriter.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\DataFormat.cs" />
-     <Compile Include="Assets\Framework\Core\ModuleManager.cs" />
      <Compile Include="Assets\Framework\UIShape\UIPolygon.cs" />
      <Compile Include="Assets\Framework\UIShape\UIStandardBezierLinePointController.cs" />
      <Compile Include="Assets\Framework\Core\MonoBehaviourAdapter\Trigger2DAdapter.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\UInt64Serializer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoIncludeAttribute.cs" />
+     <Compile Include="Assets\Framework\Core\Data\AppSettings.cs" />
      <Compile Include="Assets\Framework\Core\UI\UIClickScalePlayer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\SByteSerializer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\BclHelpers.cs" />
@@ -148,15 +146,13 @@
      <Compile Include="Assets\Framework\Core\UI\UIGridListView.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\FieldDecorator.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\DiscriminatedUnion.cs" />
-     <Compile Include="Assets\Framework\Core\UpdateManager.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\NetObjectCache.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\CallbackSet.cs" />
      <Compile Include="Assets\Framework\Net\Server\SocketServerHandler.cs" />
      <Compile Include="Assets\Framework\Core\MonoBehaviourAdapter\Collision2DAdapter.cs" />
-     <Compile Include="Assets\Framework\Core\ResManager.cs" />
+     <Compile Include="Assets\Framework\Core\Manager\ResManager.cs" />
      <Compile Include="Assets\Framework\Os\Loom.cs" />
      <Compile Include="Assets\Framework\UIShape\UIBezierLine.cs" />
-     <Compile Include="Assets\Framework\Core\ViewManager.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Compiler\CompilerContext.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\ProtoDecoratorBase.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\NetObjectSerializer.cs" />
@@ -166,27 +162,23 @@
      <Compile Include="Assets\Framework\I18n\I18nBitmapFontText.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\ArrayDecorator.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\Int64Serializer.cs" />
-     <Compile Include="Assets\Framework\Core\IManager.cs" />
      <Compile Include="Assets\Framework\Utility\CsvUtility.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\ProtoSyntax.cs" />
-     <Compile Include="Assets\Framework\Core\View.cs" />
      <Compile Include="Assets\Framework\Plugins\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
      <Compile Include="Assets\Framework\Net\IResponseHandler.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs" />
-     <Compile Include="Assets\Framework\Core\HotfixManager.cs" />
+     <Compile Include="Assets\Framework\Core\Manager\HotfixManager.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ExtensibleUtil.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\TypeSerializer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\DoubleSerializer.cs" />
      <Compile Include="Assets\Framework\Core\UI\UIToggle.cs" />
      <Compile Include="Assets\Framework\Plugins\Mono.Xml\MiniParser.cs" />
      <Compile Include="Assets\Framework\Net\SocketClientHandler.cs" />
-     <Compile Include="Assets\Framework\Core\FrameworkEngine.cs" />
+     <Compile Include="Assets\Framework\Core\Engine.cs" />
      <Compile Include="Assets\Framework\Plugins\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
-     <Compile Include="Assets\Framework\Core\CoroutineManager.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\MetaType.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\ParseableSerializer.cs" />
      <Compile Include="Assets\Framework\Core\MonoBehaviourAdapter\MonoBehaviourAdapter.cs" />
-     <Compile Include="Assets\Framework\Core\Module.cs" />
      <Compile Include="Assets\Framework\Net\AsyncSocketClient.cs" />
      <Compile Include="Assets\Framework\UIShape\UITriangle.cs" />
      <Compile Include="Assets\Framework\Net\Server\AsyncSocketServer.cs" />
@@ -201,7 +193,6 @@
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\TypeModel.cs" />
      <Compile Include="Assets\Framework\Native\AdManager\AdsVideo.cs" />
      <Compile Include="Assets\Framework\Net\ISocketClient.cs" />
-     <Compile Include="Assets\Framework\ILRuntime\ILRuntimeAdapter\ViewAdapter.cs" />
      <Compile Include="Assets\Framework\Plugins\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\Framework\Core\UI\UIEnableScalePlayer.cs" />
      <Compile Include="Assets\Framework\Plugins\LitJson\JsonMapper.cs" />
@@ -215,7 +206,7 @@
      <Compile Include="Assets\Framework\Plugins\protobuf-net\KeyValuePairProxy.cs" />
      <Compile Include="Assets\Framework\Core\MonoBehaviourAdapter\PointerDragAdapter.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtobufPropertyHelper.cs" />
-     <Compile Include="Assets\Framework\Core\ManiFest.cs" />
+     <Compile Include="Assets\Framework\Core\Version\ManiFest.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\ReflectedUriDecorator.cs" />
      <Compile Include="Assets\Framework\Native\TTAd\TTAdManagerClientAnd.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\IExtension.cs" />
@@ -226,7 +217,7 @@
      <Compile Include="Assets\Framework\Plugins\protobuf-net\BufferPool.cs" />
      <Compile Include="Assets\Framework\Plugins\LitJson\Lexer.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Helpers.cs" />
-     <Compile Include="Assets\Framework\Core\Manager.cs" />
+     <Compile Include="Assets\Framework\Core\Manager\Manager.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoMapAttribute.cs" />
      <Compile Include="Assets\Framework\Utility\NetUtility.cs" />
      <Compile Include="Assets\Framework\Net\AsyncSocketMarshalCoder.cs" />
@@ -235,13 +226,11 @@
      <Compile Include="Assets\Framework\Native\Util\CommonUtil.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Meta\BasicList.cs" />
      <Compile Include="Assets\Framework\Core\UI\UIToggleGroup.cs" />
-     <Compile Include="Assets\Framework\Core\Bundle.cs" />
      <Compile Include="Assets\Framework\Net\Tcp\Circlerbytes.cs" />
-     <Compile Include="Assets\Framework\Core\VersionHandler.cs" />
+     <Compile Include="Assets\Framework\Core\Version\VersionHandler.cs" />
      <Compile Include="Assets\Framework\Plugins\LitJson\JsonException.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoConverterAttribute.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\EnumSerializer.cs" />
-     <Compile Include="Assets\Framework\ILRuntime\ILRuntimeAdapter\ModuleAdapter.cs" />
      <Compile Include="Assets\Framework\Utility\ProtoUtility.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\BufferExtension.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\UInt16Serializer.cs" />
@@ -260,8 +249,6 @@
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ProtoReader.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\Serializers\UInt32Serializer.cs" />
      <Compile Include="Assets\Framework\I18n\I18nImage.cs" />
-     <Compile Include="Assets\Framework\Core\ModuleConfigHandler.cs" />
-     <Compile Include="Assets\Framework\Core\EventManager.cs" />
      <Compile Include="Assets\Framework\Plugins\LitJson\ParserToken.cs" />
      <Compile Include="Assets\Framework\Plugins\protobuf-net\ServiceModel\ProtoEndpointBehavior.cs" />
      <Compile Include="Assets\Framework\I18n\I18n.cs" />
@@ -905,6 +892,12 @@
  </Reference>
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity2020.3.32f1c1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Addressables">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ResourceManager">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

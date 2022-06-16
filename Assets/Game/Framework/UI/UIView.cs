@@ -51,7 +51,7 @@ namespace Game.Framework.UI
 
         public UIView(RectTransform trans)
         {
-            if (trans.parent != UIManager.Instance.viewRoot && trans.parent != UIManager.Instance.viewRootMenu)
+            if (trans.parent != UIManager.instance.viewRoot && trans.parent != UIManager.instance.viewRootMenu)
             {
                 throw new Exception(string.Format("{0} not view transform", GetType().Name));
             }
@@ -72,7 +72,7 @@ namespace Game.Framework.UI
         /// </summary>
         public void Show()
         {
-            UIManager.Instance.OnViewShow(this);
+            UIManager.instance.OnViewShow(this);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Game.Framework.UI
         /// </summary>
         public void ShowAsNoMask()
         {
-            UIManager.Instance.OnViewShowAsNoMask(this);
+            UIManager.instance.OnViewShowAsNoMask(this);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Game.Framework.UI
             if (!transform.gameObject.activeSelf)
                 return;
             gameObject.SetActive(false);
-            UIManager.Instance.OnViewHide(this);
+            UIManager.instance.OnViewHide(this);
         }
 
         public void AddUpdate(Action action)

@@ -52,18 +52,21 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Game\Config\LegionConfig.cs" />
+     <Compile Include="Assets\Game\ConfigData\LegionConfig.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionPath.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionGame.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\AudioManager.cs" />
      <Compile Include="Assets\Game\Framework\UI\UIBaseView.cs" />
      <Compile Include="Assets\Game\Scene\Legion\TowerColorSetter.cs" />
      <Compile Include="Assets\Game\Framework\UI\UIGridListView.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionRoadManager.cs" />
      <Compile Include="Assets\Game\Scene\Legion\IRoadManager.cs" />
+     <Compile Include="Assets\Game\Framework\GameEngine.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\IAssetsManagerListener.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionPathManager.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionAI.cs" />
-     <Compile Include="Assets\Game\Framework\MonoAdapter\MonoAdapterManager.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\IModule.cs" />
+     <Compile Include="Assets\Game\Framework\MonoAdapter\MonoSingleton.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionVOObject.cs" />
      <Compile Include="Assets\Game\Framework\UI\AnimationShowType.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionType.cs" />
@@ -71,17 +74,21 @@
      <Compile Include="Assets\Game\Framework\UI\AnimationHideType.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionPool.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\IHotUpdateListener.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\ModuleManager.cs" />
      <Compile Include="Assets\Game\Scene\Legion\ConfigManager.cs" />
      <Compile Include="Assets\Game\Scene\Legion\Data\TowerInfo.cs" />
      <Compile Include="Assets\Game\Scene\Legion\GameObjectPool.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionTower.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\AssetEventData.cs" />
-     <Compile Include="Assets\Game\Config\TowerConfig.cs" />
-     <Compile Include="Assets\Game\Module\Login\LoginView.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\UpdateManager.cs" />
+     <Compile Include="Assets\Game\ConfigData\TowerConfig.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionUtil.cs" />
+     <Compile Include="Assets\Game\Module\Login\LoginView.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionRoad.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\IHotUpdatePresenter.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\CoroutineManager.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionProAI.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\Module.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionTowerManager.cs" />
      <Compile Include="Assets\Game\Module\Login\Login.cs" />
      <Compile Include="Assets\Game\Module\Login\HotUpdateView.cs" />
@@ -91,15 +98,19 @@
      <Compile Include="Assets\Game\Config\GameConfig.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionSoldierManager.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\AssetEvent.cs" />
+     <Compile Include="Assets\Game\Framework\MonoAdapter\MonoAdapterObject.cs" />
      <Compile Include="Assets\Game\Scene\Legion\LegionSoldier.cs" />
-     <Compile Include="Assets\Game\Config\LevelConfig.cs" />
+     <Compile Include="Assets\Game\ConfigData\LevelConfig.cs" />
      <Compile Include="Assets\Game\Scene\Legion\Ext.cs" />
+     <Compile Include="Assets\Game\Framework\Data\Bundle.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\AssetsManager.cs" />
      <Compile Include="Assets\Game\Framework\AssetsManager\HotUpdateHandler.cs" />
      <Compile Include="Assets\Game\Framework\UI\UIHorizontalListView.cs" />
-     <Compile Include="Assets\Game\Config\LevelTowerConfig.cs" />
-     <Compile Include="Assets\Game\Framework\MonoAdapter\MonoAdapterObject.cs" />
+     <Compile Include="Assets\Game\ConfigData\LevelTowerConfig.cs" />
      <Compile Include="Assets\Game\Framework\UI\UIView.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\ModuleConfigManager.cs" />
+     <Compile Include="Assets\Game\Framework\Manager\EventManager.cs" />
+     <Compile Include="Assets\Game\Config\ModuleConfig.cs" />
      <None Include="Assets\Game\Game.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity2020.3.32f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

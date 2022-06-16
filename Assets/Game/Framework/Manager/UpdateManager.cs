@@ -7,9 +7,10 @@
 
 using System;
 using System.Collections.Generic;
+using Game.Common;
 
 namespace Framework.Core {
-    public class UpdateManager : Manager<UpdateManager> {
+    public class UpdateManager : MonoSingleton<UpdateManager> {
 
         private List<Action> _updates = new List<Action>();
 
@@ -33,9 +34,15 @@ namespace Framework.Core {
                 update();
             }
         }
+        
+        protected override void OnInit()
+        {
+            
+        }
 
-        public override void Dispose() {
-            this._updates.Clear();
+        protected override void OnDestroy()
+        {
+            
         }
     }
 }

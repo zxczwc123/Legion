@@ -14,35 +14,30 @@ using UnityEngine.Serialization;
 namespace Framework.Core.UI
 {
 
+    public delegate void OnAudioPlayEvent(string clipPath);
+    
+    public delegate void OnAudioLoadEvent(string clipPath);
 
     [RequireComponent (typeof (UnityEngine.UI.Selectable))]
     public class UIAudioClipPlayer : MonoBehaviour, IPointerClickHandler {
 
-        /// <summary>
-        /// 已经加载过的audioClip
-        /// </summary>
-        private static List<string> s_Clips;
+        public static OnAudioPlayEvent onAudioPlayEvent;
+        
+        public static OnAudioPlayEvent onAudioLoadEvent;
 
         /// <summary>
         /// 要播放的音频路径
         /// </summary>
-        [FormerlySerializedAs("clipPath")] [SerializeField]
+        [SerializeField]
         private string m_ClipPath;
 
         private void Awake () {
-            if (s_Clips == null) {
-                s_Clips = new List<string> ();
-            }
-            if (!s_Clips.Contains (m_ClipPath)) {
-                s_Clips.Add (m_ClipPath);
-                AudioManager.Instance.LoadAudioClip (m_ClipPath, m_ClipPath);
-            }
+            onAudioLoadEvent?.Invoke(m_ClipPath);
         }
 
         #region IPointerClickHandler implementation
         public void OnPointerClick (PointerEventData eventData) {
-
-            AudioManager.Instance.PlaySfx (m_ClipPath);
+            onAudioPlayEvent?.Invoke(m_ClipPath);
         }
         #endregion
     }

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Framework.Core;
 using Framework.Core.MonoBehaviourAdapter;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Framework.Core {
+namespace Game.Framework {
     public abstract class Module : IModule {
         /// <summary>
         /// 模块是否已经加载完毕
@@ -53,7 +54,7 @@ namespace Framework.Core {
         /// <param name="moduleName"></param>
         /// <param name="bundle"></param>
         protected static void LoadModule (string moduleName, Bundle bundle = null) {
-            ModuleManager.Instance.LoadModule (moduleName, bundle);
+            ModuleManager.instance.LoadModule (moduleName, bundle);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Framework.Core {
         /// <param name="moduleName"></param>
         /// <param name="bundle"></param>
         protected static void LoadModuleAysnc(string moduleName, Bundle bundle = null) {
-            ModuleManager.Instance.LoadModuleAsync(moduleName, bundle);
+            ModuleManager.instance.LoadModuleAsync(moduleName, bundle);
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace Framework.Core {
         /// <param name="bundle"></param>
         protected static void UnLoadModule (string moduleName, Bundle bundle = null) {
 
-            ModuleManager.Instance.UnloadModule (moduleName, bundle);
+            ModuleManager.instance.UnloadModule (moduleName, bundle);
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Framework.Core {
         /// <param name="moduleName"></param>
         /// <param name="bundle"></param>
         protected static void OpenModule (string moduleName, Bundle bundle = null) {
-            ModuleManager.Instance.OpenModule (moduleName, bundle);
+            ModuleManager.instance.OpenModule (moduleName, bundle);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Framework.Core {
         /// <param name="moduleName"></param>
         /// <param name="bundle"></param>
         protected static void OpenModuleAsync(string moduleName, Bundle bundle = null) {
-            ModuleManager.Instance.OpenModuleAsync(moduleName, bundle);
+            ModuleManager.instance.OpenModuleAsync(moduleName, bundle);
         }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace Framework.Core {
         /// <param name="moduleName"></param>
         /// <param name="bundle"></param>
         protected static void CloseModule (string moduleName, Bundle bundle = null) {
-            ModuleManager.Instance.CloseModule (moduleName, bundle);
+            ModuleManager.instance.CloseModule (moduleName, bundle);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Framework.Core {
         /// </summary>
         /// <param name="routine"></param>
         protected void StartCoroutine (IEnumerator routine) {
-            CoroutineManager.Instance.StartCoroutine (routine);
+            CoroutineManager.instance.StartCoroutine (routine);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Framework.Core {
         /// </summary>
         /// <param name="routine"></param>
         protected void StopCoroutine (IEnumerator routine) {
-            CoroutineManager.Instance.StopCoroutine (routine);
+            CoroutineManager.instance.StopCoroutine (routine);
         }
 
         /// <summary>

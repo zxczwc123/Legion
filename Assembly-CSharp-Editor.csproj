@@ -717,6 +717,12 @@
  <Reference Include="Unity.RenderPipelines.Universal.Runtime">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.CacheServer">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Addressables">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -738,8 +744,8 @@
  <Reference Include="Unity.RenderPipelines.Core.Runtime">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RemoteConfig.Editor">
- <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Editor.dll</HintPath>
+ <Reference Include="Unity.ResourceManager">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -755,6 +761,9 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RemoteConfig.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
@@ -779,6 +788,15 @@
  </Reference>
  <Reference Include="Unity.Mathematics.Editor">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ScriptableBuildPipeline">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Addressables.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+ <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RemoteConfig">
  <HintPath>E:/Zxc/Legion/Library/ScriptAssemblies/Unity.RemoteConfig.dll</HintPath>

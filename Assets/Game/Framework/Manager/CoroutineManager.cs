@@ -5,25 +5,17 @@
 // 版 本：2018.3.12f1 
 // ========================================================
 using Framework.Core.MonoBehaviourAdapter;
+using Game.Common;
 using UnityEngine;
 
-namespace Framework.Core
+namespace Game.Framework
 {
     /// <summary>
     /// 协程管理器
     /// </summary>
-    public class CoroutineManager : Manager<CoroutineManager>
+    public class CoroutineManager : MonoSingleton<CoroutineManager>
     {
 
-        protected override void Init()
-        {
-            base.Init();
-            
-        }
 
-        public override void Dispose()
-        {
-
-        }
     }
 }

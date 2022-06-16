@@ -80,7 +80,7 @@ namespace Framework.Native.WeChat {
         /// </summary>
         /// <param name="code"></param>
         public void onLoginCallback(string code) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._wechatMgr.OnNativeLoginCallback(code);
             });
         }
@@ -90,20 +90,20 @@ namespace Framework.Native.WeChat {
         /// </summary>
         /// <param name="code"></param>
         public void onShareCallback(int code) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._wechatMgr.OnNativeShareCallback(code);
             });
 
         }
 
         public void onPayCallback(int code, string orderId) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._wechatMgr.OnNativePayCallback(code, orderId);
             });
         }
 
         public void onMiniProgramCallback(string extraData) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._wechatMgr.OnWeChatMiniCallback(extraData);
             });
         }

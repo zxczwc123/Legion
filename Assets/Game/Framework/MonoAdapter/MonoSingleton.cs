@@ -12,7 +12,7 @@ namespace Game.Common {
     /// <summary>
     /// 管理器
     /// </summary>
-    public abstract class MonoAdapterManager<T> : MonoAdapterObject where T : MonoAdapterManager<T>, new() {
+    public abstract class MonoSingleton<T> : MonoAdapterObject where T : MonoSingleton<T>, new() {
 
         private static T s_Instance;
 
@@ -43,6 +43,9 @@ namespace Game.Common {
             s_Instance = null;
         }
 
-        protected abstract void OnDestroy();
+        protected virtual void OnDestroy()
+        {
+            
+        }
     }
 }

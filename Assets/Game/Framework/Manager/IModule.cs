@@ -1,8 +1,9 @@
 ﻿
 
 using System.Collections;
+using Framework.Core;
 
-namespace Framework.Core
+namespace Game.Framework
 {
     /// <summary>
     /// 模块接口

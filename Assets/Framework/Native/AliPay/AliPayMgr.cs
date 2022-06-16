@@ -129,7 +129,7 @@ namespace Framework.Native.AliPay {
         /// <param name="code"></param>
         /// <param name="result"></param>
         public void onPayCallback(int code, string result) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._alipayMgr.OnPayCallback(code, result);
             });
         }
@@ -140,7 +140,7 @@ namespace Framework.Native.AliPay {
         /// <param name="code"></param>
         /// <param name="result"></param>
         public void onAuthCallback(int code, string result) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._alipayMgr.OnAuthCallback(code, result);
             });
         }
@@ -220,7 +220,7 @@ namespace Framework.Native.AliPay {
         /// <param name="code"></param>
         /// <param name="result"></param>
         public void onPayCallback(int code, string result) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._alipayMgr.OnAliPayPayCallback(code, result);
             });
         }
@@ -231,7 +231,7 @@ namespace Framework.Native.AliPay {
         /// <param name="code"></param>
         /// <param name="result"></param>
         public void onAuthCallback(int code, string result) {
-            FrameworkEngine.Instance.RunOnMain(() => {
+            Engine.instance.RunOnMain(() => {
                 this._alipayMgr.OnAuthCallback(code, result);
             });
         }

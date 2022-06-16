@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Framework.Core
 {
-    [CreateAssetMenu(menuName = "Create GameSettings", fileName = "GameSettings", order = 0)]
-    public class GameSettings : ScriptableObject
+    [CreateAssetMenu(menuName = "Create AppSettings", fileName = "AppSettings", order = 0)]
+    public class AppSettings : ScriptableObject
     {
-        /// <summary>
-        /// 启动模块
-        /// </summary>
-        [SerializeField] public string startModule;
-
         /// <summary>
         /// 是否热更新
         /// </summary>

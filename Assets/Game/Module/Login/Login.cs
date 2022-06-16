@@ -12,6 +12,8 @@ using Framework.Core.MonoBehaviourAdapter;
 using Framework.Native.AliPay;
 using Framework.Native.WeChat;
 using Framework.Splash;
+using Game.Framework;
+using Game.Framework.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,13 +36,7 @@ namespace Game.Login {
 
             Application.targetFrameRate = 60;
 
-            ModuleManager.Instance.LoadModule("Toast");
-            ModuleManager.Instance.LoadModule("Dialog");
-            ModuleManager.Instance.LoadModule("DialogQuit");
-            ModuleManager.Instance.LoadModule("DialogTop");
-            //ModuleManager.Instance.LoadModule("Loading");
-
-            var viewEntity = ViewManager.Instance.LoadViewEntity("LoginView");
+            var viewEntity = UIManager.instance.LoadViewEntity("LoginView");
             m_View = new LoginView(viewEntity);
 
             m_View.OnLogin = OnLogin;
@@ -48,10 +44,10 @@ namespace Game.Login {
 
             var logsViewer = GameObject.Find("Reporter");
             if(logsViewer != null) {
-                logsViewer.SetActive(FrameworkEngine.Instance.isDebug);
+                logsViewer.SetActive(Engine.appSettings.isDebug);
             }
 
-            if (FrameworkEngine.Instance.isHotFix) {
+            if (Engine.appSettings.isHotFix) {
 
                 this.m_HotUpdate = new HotUpdateHandler();
                 this.m_HotUpdate.SetHotUpdateListener(this);
@@ -62,13 +58,13 @@ namespace Game.Login {
                 this.m_HotUpdate.SetHotUpdateView(this.m_HotUpdateView);
             }
 
-            UpdateManager.Instance.AddUpdate(OnUpdate);
+            UpdateManager.instance.AddUpdate(OnUpdate);
         }
 
 
         public override void OnUnload(Bundle bundle) {
-            ViewManager.Instance.UnloadViewEntity("LoginView");
-            UpdateManager.Instance.DelUpdate(OnUpdate);
+            UIManager.instance.UnloadViewEntity("LoginView");
+            UpdateManager.instance.DelUpdate(OnUpdate);
         }
 
         public override void OnOpen(Bundle bundle) {
@@ -77,7 +73,7 @@ namespace Game.Login {
 
             StartCoroutine(InintSingleMap());
 
-            if (FrameworkEngine.Instance.isHotFix) {
+            if (Engine.appSettings.isHotFix) {
                 Debug.Log("启动更新");
                 this.m_View.SetLoginActive(false);
                 this.m_HotUpdateView.Show();
@@ -105,9 +101,9 @@ namespace Game.Login {
 
         private IEnumerator InintSingleMap()
         {
-            ViewManager.Instance.LoadViewEntity("IslandSingleGameView");
+            UIManager.instance.LoadViewEntity("IslandSingleGameView");
             yield return new WaitForSeconds(0.5f);
-            ViewManager.Instance.UnloadViewEntity("IslandSingleGameView");
+            UIManager.instance.UnloadViewEntity("IslandSingleGameView");
 
         }
 
