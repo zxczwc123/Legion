@@ -21,11 +21,11 @@ namespace Game.Common {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T Instance {
+        public static T instance {
             get {
                 if (s_Instance == null) {
                     var managerGameObject = new GameObject(typeof(T).Name);
-                    managerGameObject.transform.SetParent(FrameworkEngine.Instance.gameObject.transform);
+                    GameObject.DontDestroyOnLoad(managerGameObject);
                     s_Instance = new T();
                     s_Instance.Init(managerGameObject.transform);
                     s_Instance.OnCreate();

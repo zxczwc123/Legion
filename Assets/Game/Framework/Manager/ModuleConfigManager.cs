@@ -9,9 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Framework.Core;
 using UnityEngine;
 
-namespace Framework.Core
+namespace Game.Framework
 {
     /// <summary>
     /// 模块信息

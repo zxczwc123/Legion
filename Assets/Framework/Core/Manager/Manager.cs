@@ -10,7 +10,7 @@ namespace Framework.Core {
     /// <summary>
     /// 管理器
     /// </summary>
-    public abstract class Manager<T> : MonoBehaviour, IManager where T : Manager<T> {
+    public abstract class Manager<T> : MonoBehaviour where T : Manager<T> {
 
         private static T instance;
 
@@ -22,7 +22,7 @@ namespace Framework.Core {
         public static T Instance {
             get {
                 if (instance == null) {
-                    instance = FrameworkEngine.Instance.gameObject.AddComponent<T>();
+                    instance = Engine.instance.gameObject.AddComponent<T>();
                     instance.Init();
                 }
                 return instance;
@@ -30,7 +30,10 @@ namespace Framework.Core {
         }
 
 
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+            
+        }
 
         /// <summary>
         /// 管理器唤醒

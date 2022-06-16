@@ -56,7 +56,7 @@ namespace Framework.Core {
                 Debug.Log(string.Format("streamingVersion: {0},persistentVersion: {1}", m_streamingManifest.version, m_persistentManifest.version));
                 if (string.IsNullOrEmpty(m_persistentManifest.version)) {
                     // 存在异常情况
-                    ClearPersisentAssets();
+                    ClearPersistentAssets();
                     return;
                 }
                 var compareVersion = CompareVersion(m_streamingManifest.version, m_persistentManifest.version);
@@ -67,13 +67,13 @@ namespace Framework.Core {
                     var files = CheckFiles(m_localManifest);
                     if(files.Count > 0) {
                         // 存在异常情况
-                        ClearPersisentAssets();
+                        ClearPersistentAssets();
                     }
                 } else {
                     // 资源包的版本比缓存的版本高的情况，说明应该是新安装的情况 导致，所以清空缓存
                     m_localManifest = m_streamingManifest;
                     
-                    ClearPersisentAssets();
+                    ClearPersistentAssets();
                 }
             } else {
                 m_localManifest = m_streamingManifest;
@@ -106,7 +106,7 @@ namespace Framework.Core {
             }
         }
 
-        public void ClearPersisentAssets() {
+        public void ClearPersistentAssets() {
             Directory.Delete(Application.persistentDataPath, true);
         }
 

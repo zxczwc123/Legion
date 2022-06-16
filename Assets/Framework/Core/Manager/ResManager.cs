@@ -19,7 +19,7 @@ using UnityEditor;
 namespace Framework.Core {
     /// <summary>
     /// 资源管理器
-    /// 本工程资源默认都从assetbundle中加载
+    /// 本工程资源默认都从AssetBundle中加载
     /// 资源存放目录默认放置在 Assets/Game/Res目录下
     /// </summary>
     public class ResManager : Manager<ResManager> {
@@ -148,7 +148,7 @@ namespace Framework.Core {
                 return null;
             }
 #if UNITY_EDITOR
-            if (FrameworkEngine.Instance.isAssetBundle) {
+            if (Engine.instance.isAssetBundle) {
                 return LoadFromAssetBundle<T>(path);
             } else {
                 return LoadFormRes<T>(path);
@@ -166,7 +166,7 @@ namespace Framework.Core {
         /// <param name="resourseHolder"></param>
         /// <returns></returns>
         public IEnumerator LoadAsync<T>(string path, ResourcesHolder<T> resourseHolder) where T : UnityEngine.Object {
-            if (FrameworkEngine.Instance.isAssetBundle) {
+            if (Engine.instance.isAssetBundle) {
                 // assetbundle打包后资源路径全部为小写
                 string assetBundleName = null;
                 string assetName = null;

@@ -25,7 +25,6 @@ namespace Game.Common {
             private set;
         }
 
-
         protected MonoBehaviourAdapter m_Adapter;
 
         public void Init(Transform trans) {
